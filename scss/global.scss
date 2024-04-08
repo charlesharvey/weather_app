@@ -1,0 +1,399 @@
+@import "./variables";
+@import "./reset";
+@import "./header";
+
+body {
+    font: normal 62.5% $font_stack;
+    background: $background_color;
+    position: relative;
+    color: $font_color;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+    padding: 30px;
+}
+
+
+section#seven_days {
+
+
+
+    @media(min-width: $mobile_width) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .day {
+        text-align: center;
+        flex: 1;
+        min-width: 150px;
+        position: relative;
+        // transition: all 0.3s;
+        min-height: 400px;
+
+        margin: 0 0 30px;
+
+        @media(min-width: $mobile_width) {
+            min-height: 320px;
+            margin: 0;
+
+            &:hover {
+                // flex: 2;
+            }
+        }
+
+
+
+
+        padding: 20px 30px 70px;
+
+        background-color: transparentize(white, 0.3);
+        border-top: 5px solid $brand_color;
+
+        box-shadow: $box_shadow;
+
+        &.weather_01d {
+            border-color: $sun_color;
+
+            h3 .dayOfWeek {
+                color: $sun_color;
+            }
+        }
+
+        &.weather_10d {
+            border-color: $rain_color;
+
+            h3 .dayOfWeek {
+                color: $rain_color;
+            }
+
+        }
+
+        &.weather_02d,
+        &.weather_04d,
+        &.weather_03d {
+            border-color: $cloud_color;
+
+            h3 .dayOfWeek {
+                color: $cloud_color;
+            }
+
+        }
+
+        &.weather_13d {
+            border-color: $snow_color;
+
+            h3 .dayOfWeek {
+                color: $snow_color;
+            }
+        }
+
+
+
+
+        h3 {
+            font-size: 2.3em;
+            text-transform: uppercase;
+
+            .dayOfWeek {
+                color: $brand_color;
+
+            }
+        }
+    }
+
+
+
+}
+
+
+.temperatures {
+    font-size: 2.5em;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+    .low_temperature,
+    .high_temperature {
+        position: relative;
+    }
+
+    .degree_symbol {
+        position: absolute;
+        font-size: 80%;
+        color: transparentize($font_color, 0.5);
+    }
+
+    .temperature_unit {
+        display: none
+    }
+}
+
+
+.weather_description {
+    // font-style: italic;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: transparentize($font_color, 0.5);
+    margin: 5px 0 0;
+
+    .icon_wind {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-size: 20px;
+        position: relative;
+        top: 5px;
+        left: 4px;
+        opacity: 0.5;
+    }
+
+}
+
+.wind_units {
+    display: none;
+}
+
+
+.rain_thing {
+    position: absolute;
+    bottom: 20px;
+    left: 10%;
+    width: 80%;
+}
+
+.rain_probability {
+    background-color: adjust-color($color: $rain_color, $lightness: +35%);
+    border-radius: 5px;
+
+    .rain_inner {
+        height: 5px;
+        background-color: $rain_color;
+        border-radius: 5px;
+
+    }
+}
+
+
+
+.rain_chance_graph,
+.temperature_bar_chart {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1px;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100px;
+
+    position: relative;
+
+    @media(min-width: $mobile_width) {
+        height: 30px;
+
+
+    }
+
+    &:after {
+        content: '';
+        border-bottom: 5px solid adjust-color($color: $rain_color, $lightness: +35%);
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        border-radius: 5px;
+
+    }
+
+    li {
+        display: block;
+        flex-grow: 0;
+        width: 10px;
+        border-radius: 2px 2px 0 0;
+        // text-indent: -9999px;
+        height: 20px;
+        background-color: $rain_color;
+        position: relative;
+        z-index: 2;
+        top: -5px;
+
+        span {
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.8em;
+            opacity: 0.5;
+
+
+
+        }
+    }
+}
+
+
+
+
+
+.temperature_line_graph {
+    height: 300px;
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+    left: 0;
+
+    .temp {
+        position: absolute;
+        top: 50%;
+        background-color: $sun_color;
+        height: 3px;
+        border-radius: 50%;
+        width: 3px;
+        text-indent: -9999px;
+    }
+}
+
+
+.temperature_bar_chart {
+    // position: absolute;
+    // bottom: 0;
+    // height: 100px;
+    // left: 0;
+    // width: 100%;
+    z-index: 3;
+    position: relative;
+    opacity: 0.3;
+
+    // gap: 0;
+    // filter: blur(1px);
+
+    &:after {
+        content: none;
+    }
+
+    li {
+        background-color: transparent;
+        background: linear-gradient(0deg, transparentize($sun_color, 0.8), $sun_color);
+        position: relative;
+        // width: 100%;
+
+        // &:after {
+        //     content: '';
+        //     width: 100%;
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     background-color: $sun_color;
+        //     height: 3px;
+        //     border-radius: 5px;
+        // }
+
+        span.record_temp {
+            opacity: 1;
+            top: -10px;
+        }
+    }
+}
+
+.icon {
+
+
+    // https://www.svgrepo.com/collection/weather-line-icons/
+
+    display: block;
+    width: 100%;
+    height: 150px;
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 170px;
+
+
+    @media(min-width: $mobile_width) {
+        height: 140px;
+        background-size: 100px;
+
+
+    }
+
+    &.icon_01d {
+        //sunny
+        background-image: url('../images/weathers/weather-icons-01-svgrepo-com.svg');
+    }
+
+    &.icon_10d {
+        //rainy
+        background-image: url('../images/weathers/weather-icons-22-svgrepo-com.svg');
+
+    }
+
+    &.icon_02d,
+    &.icon_03d,
+    &.icon_04d {
+        //cloudy
+        background-image: url('../images/weathers/weather-icons-16-svgrepo-com.svg');
+
+    }
+
+
+
+
+
+    &.icon_13d {
+        // snowy
+        background-image: url('../images/weathers/weather-icons-68-svgrepo-com.svg');
+
+    }
+
+    &.icon_wind {
+        background-image: url('../images/arrow.svg');
+
+
+    }
+}
+
+.animated {
+    .icon {
+        &.icon_01d {
+            //sunny
+            background-image: url('../images/amcharts/animated/day.svg');
+        }
+
+        &.icon_10d {
+            //rainy
+            background-image: url('../images/amcharts/animated/rainy-6.svg');
+
+        }
+
+        &.icon_02d,
+        &.icon_03d,
+        &.icon_04d {
+            //cloudy
+            background-image: url('../images/amcharts/animated/cloudy.svg');
+
+        }
+
+        &.icon_02d {
+            background-image: url('../images/amcharts/animated/cloudy-day-1.svg');
+
+        }
+
+
+
+        &.icon_13d {
+            // snowy
+            background-image: url('../images/amcharts/animated/snowy-6.svg');
+
+        }
+
+
+    }
+}

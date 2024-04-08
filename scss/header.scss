@@ -1,0 +1,13 @@
+header {
+    padding: 20px;
+    background-color: $brand_color;
+    box-shadow: $box_shadow;
+
+    h1 {
+        font-size: $font_size;
+        color: white;
+        text-align: center;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+}
