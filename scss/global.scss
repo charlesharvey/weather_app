@@ -397,3 +397,24 @@ section#seven_days {
 
     }
 }
+
+.button_group {
+    margin: 30px 0 0;
+}
+
+.button {
+    padding: 10px 30px;
+    background-color: white;
+    margin: 0 2px 2px 0;
+    border-radius: 2px;
+    box-shadow: $box_shadow;
+    font-size: 1.2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $brand_color;
+
+    &.primary {
+        background-color: $brand_color;
+        color: white;
+    }
+}

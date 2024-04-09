@@ -6,10 +6,34 @@
   // https://openweathermap.org/api/one-call-3#current
 
   let days;
-  const location = constants.woolwich;
+  let location;
   // rio woolwich svalbard bangkok
 
   onMount(() => {
+    const last_location = getLastLocation();
+    chooseLocation(last_location);
+  });
+
+  function chooseLocation(loc) {
+    if (loc === "bangkok") {
+      location = constants.bangkok;
+    } else if (loc === "rio") {
+      location = constants.rio;
+    } else if (loc === "svalbard") {
+      location = constants.svalbard;
+    } else if (loc === "malltraeth") {
+      location = constants.malltraeth;
+    } else {
+      location = constants.woolwich;
+    }
+
+    localStorage.setItem(`weather_last_location`, loc);
+
+    getWeatherData();
+  }
+
+  function getWeatherData() {
+    days = null;
     const cached = localStorage.getItem(`weather_${location.name}`);
     if (cached && constants.USE_CACHE) {
       const data = JSON.parse(cached);
@@ -22,7 +46,7 @@
     } else {
       getWeatherFromAPI();
     }
-  });
+  }
 
   function processData(data) {
     data.daily.forEach((day, di) => {
@@ -122,6 +146,15 @@
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  function getLastLocation() {
+    const l = localStorage.getItem(`weather_last_location`);
+    if (!l || l == "" || l == undefined) {
+      return "woolwich";
+    } else {
+      return l;
+    }
   }
 
   function roundTemp(a) {
@@ -261,6 +294,19 @@
           <!-- end of .day -->
         {/if}
       {/each}
+    </section>
+
+    <section>
+      <div class="button_group">
+        {#each constants.available_locations as loc}
+          <a
+            href="#location"
+            on:click={() => chooseLocation(loc)}
+            class:primary={loc == location.name}
+            class="button">{loc}</a
+          >
+        {/each}
+      </div>
     </section>
   {/if}
 </div>
