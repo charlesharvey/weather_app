@@ -8,11 +8,14 @@ export default {
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
   USE_CACHE: true,
-  MAX_TEMP: 40,
+  MAX_TEMP: 45,
   MIN_TEMP: -10,
   available_locations: ["woolwich", "malltraeth", "svalbard", "bangkok", "rio"],
   map: (number, inMin, inMax, outMin, outMax) => {
     return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+  },
+  constrain: (number, min, max) => {
+    return Math.min(Math.max(number, min), max);
   },
   doFetch: (action, method, data) => {
     if (data) {

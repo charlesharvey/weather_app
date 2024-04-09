@@ -72,16 +72,15 @@
     const maxtemp = Math.max(...alltemps);
     const lowtemp = Math.min(...alltemps);
     const bc = hours.map((h) => {
+      const ct = constants.constrain(
+        h.temp,
+        constants.MIN_TEMP,
+        constants.MAX_TEMP
+      );
       const he =
         h.temp === false
           ? 0
-          : constants.map(
-              h.temp,
-              constants.MIN_TEMP,
-              constants.MAX_TEMP,
-              0,
-              100
-            );
+          : constants.map(ct, constants.MIN_TEMP, constants.MAX_TEMP, 3, 100);
 
       const rt =
         h.temp === maxtemp || h.temp === lowtemp
