@@ -15,17 +15,19 @@
   });
 
   function chooseLocation(loc) {
-    if (loc === "bangkok") {
-      location = constants.bangkok;
-    } else if (loc === "rio") {
-      location = constants.rio;
-    } else if (loc === "svalbard") {
-      location = constants.svalbard;
-    } else if (loc === "malltraeth") {
-      location = constants.malltraeth;
-    } else {
-      location = constants.woolwich;
-    }
+    // if (loc === "bangkok") {
+    //   location = constants.bangkok;
+    // } else if (loc === "rio") {
+    //   location = constants.rio;
+    // } else if (loc === "svalbard") {
+    //   location = constants.svalbard;
+    // } else if (loc === "malltraeth") {
+    //   location = constants.malltraeth;
+    // } else {
+    //   location = constants.woolwich;
+    // }
+
+    location = constants[loc];
 
     localStorage.setItem(`weather_last_location`, loc);
 

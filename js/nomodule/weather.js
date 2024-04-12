@@ -441,17 +441,20 @@ System.register('app', [], function (exports) {
 
             var constants = {
               api_key: api_key,
-              woolwich: { name: "woolwich", lat: 51.4909082, lng: 0.0588261 },
+              woolwich: { name: "woolwich", lat: 51.491, lng: 0.0588 },
+              london: { name: "london", lat: 51.513, lng: -0.103 },
               rio: { name: "rio", lat: -22.9137907, lng: -43.7756334 },
               svalbard: { name: "svalbard", lat: 78.6196353, lng: 16.8016345 },
               bangkok: { name: "bangkok", lat: 13.7539475, lng: 100.5431602 },
               malltraeth: { name: "malltraeth", lat: 53.1919, lng: -4.3941 },
+              cork: { name: "cork", lat: 51.9, lng: -8.48 },
               ANIMATED_ICONS: false,
               CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
               USE_CACHE: true,
               MAX_TEMP: 45,
               MIN_TEMP: -10,
-              available_locations: ["woolwich", "malltraeth", "svalbard", "bangkok", "rio"],
+              available_locations: ["london", "woolwich", "malltraeth"],
+              unavailable_locations: ["svalbard", "bangkok", "rio", "cork"],
               map: (number, inMin, inMax, outMin, outMax) => {
                 return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
               },
@@ -515,7 +518,7 @@ System.register('app', [], function (exports) {
             	return child_ctx;
             }
 
-            // (211:2) {#if days}
+            // (213:2) {#if days}
             function create_if_block(ctx) {
             	let section0;
             	let t;
@@ -554,10 +557,10 @@ System.register('app', [], function (exports) {
             			}
 
             			attr_dev(section0, "id", "seven_days");
-            			add_location(section0, file, 211, 4, 5536);
+            			add_location(section0, file, 213, 4, 5601);
             			attr_dev(div, "class", "button_group");
-            			add_location(div, file, 309, 6, 9015);
-            			add_location(section1, file, 308, 4, 8999);
+            			add_location(div, file, 311, 6, 9080);
+            			add_location(section1, file, 310, 4, 9064);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, section0, anchor);
@@ -640,14 +643,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block.name,
             		type: "if",
-            		source: "(211:2) {#if days}",
+            		source: "(213:2) {#if days}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (214:8) {#if di < 7}
+            // (216:8) {#if di < 7}
             function create_if_block_1(ctx) {
             	let div5;
             	let h3;
@@ -753,37 +756,37 @@ System.register('app', [], function (exports) {
             			if_block2.c();
             			t25 = space();
             			attr_dev(span0, "class", "dayOfWeek");
-            			add_location(span0, file, 216, 14, 5702);
+            			add_location(span0, file, 218, 14, 5767);
             			attr_dev(span1, "class", "date");
-            			add_location(span1, file, 217, 14, 5773);
-            			add_location(h3, file, 215, 12, 5683);
+            			add_location(span1, file, 219, 14, 5838);
+            			add_location(h3, file, 217, 12, 5748);
             			attr_dev(div0, "class", div0_class_value = "icon icon_" + /*day*/ ctx[12].weather[0].icon);
-            			add_location(div0, file, 219, 12, 5851);
+            			add_location(div0, file, 221, 12, 5916);
             			attr_dev(span2, "class", "degree_symbol");
-            			add_location(span2, file, 223, 16, 6044);
+            			add_location(span2, file, 225, 16, 6109);
             			attr_dev(span3, "class", "temperature_unit");
-            			add_location(span3, file, 224, 16, 6101);
+            			add_location(span3, file, 226, 16, 6166);
             			attr_dev(div1, "class", "low_temperature");
-            			add_location(div1, file, 221, 14, 5956);
+            			add_location(div1, file, 223, 14, 6021);
             			attr_dev(span4, "class", "degree_symbol");
-            			add_location(span4, file, 228, 16, 6266);
+            			add_location(span4, file, 230, 16, 6331);
             			attr_dev(span5, "class", "temperature_unit");
-            			add_location(span5, file, 229, 16, 6323);
+            			add_location(span5, file, 231, 16, 6388);
             			attr_dev(div2, "class", "high_temperature");
-            			add_location(div2, file, 226, 14, 6177);
+            			add_location(div2, file, 228, 14, 6242);
             			attr_dev(div3, "class", "temperatures");
-            			add_location(div3, file, 220, 12, 5915);
+            			add_location(div3, file, 222, 12, 5980);
             			attr_dev(span6, "class", "icon icon_wind");
             			set_style(span6, "transform", windSpeedAndDirection(/*day*/ ctx[12].wind_speed, /*day*/ ctx[12].wind_deg));
-            			add_location(span6, file, 235, 16, 6542);
+            			add_location(span6, file, 237, 16, 6607);
             			attr_dev(span7, "class", "wind_units");
-            			add_location(span7, file, 242, 44, 6806);
+            			add_location(span7, file, 244, 44, 6871);
             			attr_dev(span8, "class", "wind_speed");
-            			add_location(span8, file, 234, 14, 6500);
+            			add_location(span8, file, 236, 14, 6565);
             			attr_dev(div4, "class", "weather_description");
-            			add_location(div4, file, 232, 12, 6416);
+            			add_location(div4, file, 234, 12, 6481);
             			attr_dev(div5, "class", div5_class_value = "day weather_" + /*day*/ ctx[12].weather[0].icon);
-            			add_location(div5, file, 214, 10, 5623);
+            			add_location(div5, file, 216, 10, 5688);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div5, anchor);
@@ -900,14 +903,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block_1.name,
             		type: "if",
-            		source: "(214:8) {#if di < 7}",
+            		source: "(216:8) {#if di < 7}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (247:12) {#if day.temp_line_chart}
+            // (249:12) {#if day.temp_line_chart}
             function create_if_block_6(ctx) {
             	let div;
             	let each_value_4 = /*day*/ ctx[12].temp_line_chart;
@@ -927,7 +930,7 @@ System.register('app', [], function (exports) {
             			}
 
             			attr_dev(div, "class", "temperature_line_graph");
-            			add_location(div, file, 247, 14, 6936);
+            			add_location(div, file, 249, 14, 7001);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -973,14 +976,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block_6.name,
             		type: "if",
-            		source: "(247:12) {#if day.temp_line_chart}",
+            		source: "(249:12) {#if day.temp_line_chart}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (249:16) {#each day.temp_line_chart as temp, t1}
+            // (251:16) {#each day.temp_line_chart as temp, t1}
             function create_each_block_4(ctx) {
             	let div;
             	let t0_value = /*temp*/ ctx[18].value + "";
@@ -997,7 +1000,7 @@ System.register('app', [], function (exports) {
             			set_style(div, "left", `${/*temp*/ ctx[18].oldx}%`);
             			set_style(div, "width", `${/*temp*/ ctx[18].length}%`);
             			set_style(div, "transform", `rotate(${/*temp*/ ctx[18].theta}deg)`);
-            			add_location(div, file, 249, 18, 7047);
+            			add_location(div, file, 251, 18, 7112);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -1032,14 +1035,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_each_block_4.name,
             		type: "each",
-            		source: "(249:16) {#each day.temp_line_chart as temp, t1}",
+            		source: "(251:16) {#each day.temp_line_chart as temp, t1}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (262:12) {#if day.temp_bar_chart}
+            // (264:12) {#if day.temp_bar_chart}
             function create_if_block_4(ctx) {
             	let div;
             	let ul;
@@ -1061,9 +1064,9 @@ System.register('app', [], function (exports) {
             			}
 
             			attr_dev(ul, "class", "temperature_bar_chart");
-            			add_location(ul, file, 263, 16, 7532);
+            			add_location(ul, file, 265, 16, 7597);
             			attr_dev(div, "class", "rain_thing");
-            			add_location(div, file, 262, 14, 7491);
+            			add_location(div, file, 264, 14, 7556);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -1110,14 +1113,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block_4.name,
             		type: "if",
-            		source: "(262:12) {#if day.temp_bar_chart}",
+            		source: "(264:12) {#if day.temp_bar_chart}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (271:22) {#if temp.rt}
+            // (273:22) {#if temp.rt}
             function create_if_block_5(ctx) {
             	let span;
             	let t_value = /*temp*/ ctx[18].rt + "";
@@ -1128,7 +1131,7 @@ System.register('app', [], function (exports) {
             			span = element("span");
             			t = text(t_value);
             			attr_dev(span, "class", "record_temp");
-            			add_location(span, file, 271, 24, 7867);
+            			add_location(span, file, 273, 24, 7932);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, span, anchor);
@@ -1146,14 +1149,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block_5.name,
             		type: "if",
-            		source: "(271:22) {#if temp.rt}",
+            		source: "(273:22) {#if temp.rt}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (265:18) {#each day.temp_bar_chart as temp, t1}
+            // (267:18) {#each day.temp_bar_chart as temp, t1}
             function create_each_block_3(ctx) {
             	let li;
             	let t;
@@ -1168,7 +1171,7 @@ System.register('app', [], function (exports) {
             			attr_dev(li, "class", "temp");
             			attr_dev(li, "title", li_title_value = `${/*temp*/ ctx[18].value}°`);
             			set_style(li, "height", `${/*temp*/ ctx[18].height}%`);
-            			add_location(li, file, 265, 20, 7644);
+            			add_location(li, file, 267, 20, 7709);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, li, anchor);
@@ -1207,14 +1210,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_each_block_3.name,
             		type: "each",
-            		source: "(265:18) {#each day.temp_bar_chart as temp, t1}",
+            		source: "(267:18) {#each day.temp_bar_chart as temp, t1}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (295:12) {:else}
+            // (297:12) {:else}
             function create_else_block(ctx) {
             	let div1;
             	let div0;
@@ -1226,10 +1229,10 @@ System.register('app', [], function (exports) {
             			div0 = element("div");
             			attr_dev(div0, "class", "rain_inner");
             			set_style(div0, "width", `${/*day*/ ctx[12].pop * 100}%`);
-            			add_location(div0, file, 299, 16, 8799);
+            			add_location(div0, file, 301, 16, 8864);
             			attr_dev(div1, "class", "rain_thing rain_probability");
             			attr_dev(div1, "title", div1_title_value = `${/*day*/ ctx[12].pop * 100}%`);
-            			add_location(div1, file, 295, 14, 8666);
+            			add_location(div1, file, 297, 14, 8731);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div1, anchor);
@@ -1253,14 +1256,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_else_block.name,
             		type: "else",
-            		source: "(295:12) {:else}",
+            		source: "(297:12) {:else}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (280:12) {#if day.hours.length > 4}
+            // (282:12) {#if day.hours.length > 4}
             function create_if_block_2(ctx) {
             	let div;
             	let ul;
@@ -1282,9 +1285,9 @@ System.register('app', [], function (exports) {
             			}
 
             			attr_dev(ul, "class", "rain_chance_graph");
-            			add_location(ul, file, 281, 16, 8146);
+            			add_location(ul, file, 283, 16, 8211);
             			attr_dev(div, "class", "rain_thing");
-            			add_location(div, file, 280, 14, 8105);
+            			add_location(div, file, 282, 14, 8170);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -1331,14 +1334,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block_2.name,
             		type: "if",
-            		source: "(280:12) {#if day.hours.length > 4}",
+            		source: "(282:12) {#if day.hours.length > 4}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (288:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}
+            // (290:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}
             function create_if_block_3(ctx) {
             	let span;
             	let t_value = timeToHour(/*hour*/ ctx[15].dt) + "";
@@ -1348,7 +1351,7 @@ System.register('app', [], function (exports) {
             		c: function create() {
             			span = element("span");
             			t = text(t_value);
-            			add_location(span, file, 288, 24, 8474);
+            			add_location(span, file, 290, 24, 8539);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, span, anchor);
@@ -1366,14 +1369,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block_3.name,
             		type: "if",
-            		source: "(288:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}",
+            		source: "(290:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (283:18) {#each day.hours as hour, h1}
+            // (285:18) {#each day.hours as hour, h1}
             function create_each_block_2(ctx) {
             	let li;
             	let show_if = /*h1*/ ctx[17] % Math.ceil(/*day*/ ctx[12].hours.length / 4) == 0;
@@ -1388,7 +1391,7 @@ System.register('app', [], function (exports) {
             			t = space();
             			attr_dev(li, "title", li_title_value = `${/*hour*/ ctx[15].pop * 100}%`);
             			set_style(li, "height", `${/*hour*/ ctx[15].pop * 100}%`);
-            			add_location(li, file, 283, 20, 8245);
+            			add_location(li, file, 285, 20, 8310);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, li, anchor);
@@ -1429,14 +1432,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_each_block_2.name,
             		type: "each",
-            		source: "(283:18) {#each day.hours as hour, h1}",
+            		source: "(285:18) {#each day.hours as hour, h1}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (213:6) {#each days as day, di}
+            // (215:6) {#each days as day, di}
             function create_each_block_1(ctx) {
             	let if_block_anchor;
             	let if_block = /*di*/ ctx[14] < 7 && create_if_block_1(ctx);
@@ -1463,14 +1466,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_each_block_1.name,
             		type: "each",
-            		source: "(213:6) {#each days as day, di}",
+            		source: "(215:6) {#each days as day, di}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (311:8) {#each constants.available_locations as loc}
+            // (313:8) {#each constants.available_locations as loc}
             function create_each_block(ctx) {
             	let a;
             	let t_value = /*loc*/ ctx[9] + "";
@@ -1489,7 +1492,7 @@ System.register('app', [], function (exports) {
             			attr_dev(a, "href", "#location");
             			attr_dev(a, "class", "button");
             			toggle_class(a, "primary", /*loc*/ ctx[9] == /*location*/ ctx[1].name);
-            			add_location(a, file, 311, 10, 9105);
+            			add_location(a, file, 313, 10, 9170);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, a, anchor);
@@ -1518,7 +1521,7 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_each_block.name,
             		type: "each",
-            		source: "(311:8) {#each constants.available_locations as loc}",
+            		source: "(313:8) {#each constants.available_locations as loc}",
             		ctx
             	});
 
@@ -1534,7 +1537,7 @@ System.register('app', [], function (exports) {
             			div = element("div");
             			if (if_block) if_block.c();
             			toggle_class(div, "animated", constants.ANIMATED_ICONS);
-            			add_location(div, file, 209, 0, 5471);
+            			add_location(div, file, 211, 0, 5536);
             		},
             		l: function claim(nodes) {
             			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1639,17 +1642,18 @@ System.register('app', [], function (exports) {
             	});
 
             	function chooseLocation(loc) {
-            		if (loc === "bangkok") {
-            			$$invalidate(1, location = constants.bangkok);
-            		} else if (loc === "rio") {
-            			$$invalidate(1, location = constants.rio);
-            		} else if (loc === "svalbard") {
-            			$$invalidate(1, location = constants.svalbard);
-            		} else if (loc === "malltraeth") {
-            			$$invalidate(1, location = constants.malltraeth);
-            		} else {
-            			$$invalidate(1, location = constants.woolwich);
-            		}
+            		// if (loc === "bangkok") {
+            		//   location = constants.bangkok;
+            		// } else if (loc === "rio") {
+            		//   location = constants.rio;
+            		// } else if (loc === "svalbard") {
+            		//   location = constants.svalbard;
+            		// } else if (loc === "malltraeth") {
+            		//   location = constants.malltraeth;
+            		// } else {
+            		//   location = constants.woolwich;
+            		// }
+            		$$invalidate(1, location = constants[loc]);
 
             		localStorage.setItem(`weather_last_location`, loc);
             		getWeatherData();

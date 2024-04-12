@@ -326,30 +326,38 @@ section#seven_days {
 
     &.icon_01d {
         //sunny
-        background-image: url('../images/weathers/weather-icons-01-svgrepo-com.svg');
+        background-image: url('../images/weathers/sunny.svg');
     }
 
     &.icon_10d {
         //rainy
-        background-image: url('../images/weathers/weather-icons-22-svgrepo-com.svg');
+        background-image: url('../images/weathers/rainy.svg');
 
     }
 
-    &.icon_02d,
+    &.icon_02d {
+        background-image: url('../images/weathers/sunny_cloudy.svg');
+
+    }
+
     &.icon_03d,
     &.icon_04d {
         //cloudy
-        background-image: url('../images/weathers/weather-icons-16-svgrepo-com.svg');
+        background-image: url('../images/weathers/cloudy.svg');
 
     }
-
-
 
 
 
     &.icon_13d {
         // snowy
-        background-image: url('../images/weathers/weather-icons-68-svgrepo-com.svg');
+        background-image: url('../images/weathers/snowy.svg');
+
+    }
+
+    &.icon_50d {
+        // foggy
+        background-image: url('../images/weathers/foggy.svg');
 
     }
 
