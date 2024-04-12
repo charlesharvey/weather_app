@@ -52,12 +52,18 @@
     data.daily.forEach((day, di) => {
       const date = timeToDate(day.dt);
       const hours = data.hourly.filter((h) => timeToDate(h.dt) === date);
-      const mxhrs = 18;
-      if (di == 0 && hours.length < mxhrs) {
+      const mxhrs = 23;
+      if ((di == 0 || di == 2) && hours.length < mxhrs) {
         while (hours.length < mxhrs) {
-          hours.unshift({ dt: 0, temp: false, pop: 0 });
+          const c = { dt: 0, temp: false, pop: 0 };
+          if (di == 0) {
+            hours.unshift(c);
+          } else if (di == 2) {
+            hours.push(c);
+          }
         }
       }
+
       day.hours = hours;
 
       // day.temp_line_chart = tempLineChart(hours);
@@ -68,9 +74,11 @@
   }
 
   function tempBarChart(hours) {
-    const alltemps = hours.filter((h) => h !== false).map((h) => h.temp);
+    const alltemps = hours.filter((h) => h.temp !== false).map((h) => h.temp);
     const maxtemp = Math.max(...alltemps);
     const lowtemp = Math.min(...alltemps);
+    let maxtaken = false;
+    let mintaken = false;
     const bc = hours.map((h) => {
       const ct = constants.constrain(
         h.temp,
@@ -82,11 +90,14 @@
           ? 0
           : constants.map(ct, constants.MIN_TEMP, constants.MAX_TEMP, 3, 100);
 
-      const rt =
-        h.temp === maxtemp || h.temp === lowtemp
-          ? `${roundTemp(h.temp)}°`
-          : false;
-
+      let rt = false;
+      if (h.temp === maxtemp && !maxtaken) {
+        maxtaken = true;
+        rt = `${roundTemp(h.temp)}°`;
+      } else if (h.temp === lowtemp && !mintaken) {
+        mintaken = true;
+        rt = `${roundTemp(h.temp)}°`;
+      }
       return {
         value: `${roundTemp(h.temp)}`,
         height: he,
@@ -254,7 +265,7 @@
                   {#each day.temp_bar_chart as temp, t1}
                     <li
                       class="temp"
-                      title={`${temp.value}`}
+                      title={`${temp.value}°`}
                       style:height={`${temp.height}%`}
                     >
                       {#if temp.rt}
