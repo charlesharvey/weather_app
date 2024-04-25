@@ -190,19 +190,20 @@
   }
 
   function focusOnHourByPos(event, day) {
-    if (event.target.nodeName === "UL") {
-      const x = event.layerX;
-      const w = event.target.offsetWidth;
-      const p = x / w;
-      const hl = day.hours.length;
-      const ind = Math.floor(p * hl);
-      // console.log(event.target);
-      // console.log(x, w, p, hl, ind);
-      const hr = day.hours[ind];
-      if (hr) {
-        if (hr.temp) {
-          focusOnHour(day, day.hours[ind]);
-        }
+    let tar = event.target;
+    while (tar.nodeName !== "UL") {
+      tar = tar.parentElement;
+    }
+    const bb = tar.getBoundingClientRect();
+    const w = bb.width;
+    const x = event.clientX - bb.left;
+    const p = x / w;
+    const hl = day.hours.length;
+    const ind = Math.floor(p * hl);
+    const hr = day.hours[ind];
+    if (hr) {
+      if (hr.temp) {
+        focusOnHour(day, day.hours[ind]);
       }
     }
   }

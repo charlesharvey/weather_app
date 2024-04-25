@@ -1051,7 +1051,7 @@ function get_each_context_4(ctx, list, i) {
 	return child_ctx;
 }
 
-// (254:2) {#if days}
+// (255:2) {#if days}
 function create_if_block$1(ctx) {
 	let section0;
 	let t;
@@ -1095,10 +1095,10 @@ function create_if_block$1(ctx) {
 			}
 
 			attr_dev(section0, "id", "seven_days");
-			add_location(section0, file$1, 254, 4, 6545);
+			add_location(section0, file$1, 255, 4, 6539);
 			attr_dev(div, "class", "button_group");
-			add_location(div, file$1, 330, 6, 9180);
-			add_location(section1, file$1, 329, 4, 9164);
+			add_location(div, file$1, 331, 6, 9174);
+			add_location(section1, file$1, 330, 4, 9158);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, section0, anchor);
@@ -1205,14 +1205,14 @@ function create_if_block$1(ctx) {
 		block,
 		id: create_if_block$1.name,
 		type: "if",
-		source: "(254:2) {#if days}",
+		source: "(255:2) {#if days}",
 		ctx
 	});
 
 	return block;
 }
 
-// (257:8) {#if di < 7}
+// (258:8) {#if di < 7}
 function create_if_block_1$1(ctx) {
 	let div;
 	let current_block_type_index;
@@ -1256,7 +1256,7 @@ function create_if_block_1$1(ctx) {
 			if_block3.c();
 			t3 = space();
 			attr_dev(div, "class", div_class_value = "day weather_" + /*day*/ ctx[21].weather[0].icon);
-			add_location(div, file$1, 257, 10, 6632);
+			add_location(div, file$1, 258, 10, 6626);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div, anchor);
@@ -1362,14 +1362,14 @@ function create_if_block_1$1(ctx) {
 		block,
 		id: create_if_block_1$1.name,
 		type: "if",
-		source: "(257:8) {#if di < 7}",
+		source: "(258:8) {#if di < 7}",
 		ctx
 	});
 
 	return block;
 }
 
-// (261:12) {:else}
+// (262:12) {:else}
 function create_else_block_1(ctx) {
 	let weatherinfo;
 	let current;
@@ -1410,14 +1410,14 @@ function create_else_block_1(ctx) {
 		block,
 		id: create_else_block_1.name,
 		type: "else",
-		source: "(261:12) {:else}",
+		source: "(262:12) {:else}",
 		ctx
 	});
 
 	return block;
 }
 
-// (259:12) {#if focussed_hour && focussed_day == day}
+// (260:12) {#if focussed_hour && focussed_day == day}
 function create_if_block_7(ctx) {
 	let weatherinfo;
 	let current;
@@ -1458,14 +1458,14 @@ function create_if_block_7(ctx) {
 		block,
 		id: create_if_block_7.name,
 		type: "if",
-		source: "(259:12) {#if focussed_hour && focussed_day == day}",
+		source: "(260:12) {#if focussed_hour && focussed_day == day}",
 		ctx
 	});
 
 	return block;
 }
 
-// (264:12) {#if day.temp_line_chart}
+// (265:12) {#if day.temp_line_chart}
 function create_if_block_6(ctx) {
 	let div;
 	let each_value_4 = /*day*/ ctx[21].temp_line_chart;
@@ -1485,7 +1485,7 @@ function create_if_block_6(ctx) {
 			}
 
 			attr_dev(div, "class", "temperature_line_graph");
-			add_location(div, file$1, 264, 14, 6911);
+			add_location(div, file$1, 265, 14, 6905);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div, anchor);
@@ -1531,14 +1531,14 @@ function create_if_block_6(ctx) {
 		block,
 		id: create_if_block_6.name,
 		type: "if",
-		source: "(264:12) {#if day.temp_line_chart}",
+		source: "(265:12) {#if day.temp_line_chart}",
 		ctx
 	});
 
 	return block;
 }
 
-// (266:16) {#each day.temp_line_chart as temp, t1}
+// (267:16) {#each day.temp_line_chart as temp, t1}
 function create_each_block_4(ctx) {
 	let div;
 	let t0_value = /*temp*/ ctx[27].value + "";
@@ -1555,7 +1555,7 @@ function create_each_block_4(ctx) {
 			set_style(div, "left", `${/*temp*/ ctx[27].oldx}%`);
 			set_style(div, "width", `${/*temp*/ ctx[27].length}%`);
 			set_style(div, "transform", `rotate(${/*temp*/ ctx[27].theta}deg)`);
-			add_location(div, file$1, 266, 18, 7022);
+			add_location(div, file$1, 267, 18, 7016);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div, anchor);
@@ -1590,14 +1590,14 @@ function create_each_block_4(ctx) {
 		block,
 		id: create_each_block_4.name,
 		type: "each",
-		source: "(266:16) {#each day.temp_line_chart as temp, t1}",
+		source: "(267:16) {#each day.temp_line_chart as temp, t1}",
 		ctx
 	});
 
 	return block;
 }
 
-// (279:12) {#if day.temp_bar_chart}
+// (280:12) {#if day.temp_bar_chart}
 function create_if_block_4(ctx) {
 	let div;
 	let ul;
@@ -1625,9 +1625,9 @@ function create_if_block_4(ctx) {
 			}
 
 			attr_dev(ul, "class", "temperature_bar_chart");
-			add_location(ul, file$1, 280, 16, 7507);
+			add_location(ul, file$1, 281, 16, 7501);
 			attr_dev(div, "class", "rain_thing");
-			add_location(div, file$1, 279, 14, 7466);
+			add_location(div, file$1, 280, 14, 7460);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div, anchor);
@@ -1683,14 +1683,14 @@ function create_if_block_4(ctx) {
 		block,
 		id: create_if_block_4.name,
 		type: "if",
-		source: "(279:12) {#if day.temp_bar_chart}",
+		source: "(280:12) {#if day.temp_bar_chart}",
 		ctx
 	});
 
 	return block;
 }
 
-// (292:22) {#if temp.rt}
+// (293:22) {#if temp.rt}
 function create_if_block_5(ctx) {
 	let span;
 	let t_value = /*temp*/ ctx[27].rt + "";
@@ -1701,7 +1701,7 @@ function create_if_block_5(ctx) {
 			span = element("span");
 			t = text(t_value);
 			attr_dev(span, "class", "record_temp");
-			add_location(span, file$1, 292, 24, 8022);
+			add_location(span, file$1, 293, 24, 8016);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, span, anchor);
@@ -1719,14 +1719,14 @@ function create_if_block_5(ctx) {
 		block,
 		id: create_if_block_5.name,
 		type: "if",
-		source: "(292:22) {#if temp.rt}",
+		source: "(293:22) {#if temp.rt}",
 		ctx
 	});
 
 	return block;
 }
 
-// (285:18) {#each day.temp_bar_chart as temp, t1}
+// (286:18) {#each day.temp_bar_chart as temp, t1}
 function create_each_block_3(ctx) {
 	let li;
 	let t;
@@ -1741,7 +1741,7 @@ function create_each_block_3(ctx) {
 			attr_dev(li, "class", "temp");
 			attr_dev(li, "title", li_title_value = `${/*temp*/ ctx[27].value}°`);
 			set_style(li, "height", `${/*temp*/ ctx[27].height}%`);
-			add_location(li, file$1, 285, 20, 7719);
+			add_location(li, file$1, 286, 20, 7713);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, li, anchor);
@@ -1780,14 +1780,14 @@ function create_each_block_3(ctx) {
 		block,
 		id: create_each_block_3.name,
 		type: "each",
-		source: "(285:18) {#each day.temp_bar_chart as temp, t1}",
+		source: "(286:18) {#each day.temp_bar_chart as temp, t1}",
 		ctx
 	});
 
 	return block;
 }
 
-// (316:12) {:else}
+// (317:12) {:else}
 function create_else_block$1(ctx) {
 	let div1;
 	let div0;
@@ -1799,10 +1799,10 @@ function create_else_block$1(ctx) {
 			div0 = element("div");
 			attr_dev(div0, "class", "rain_inner");
 			set_style(div0, "width", `${/*day*/ ctx[21].pop * 100}%`);
-			add_location(div0, file$1, 320, 16, 8964);
+			add_location(div0, file$1, 321, 16, 8958);
 			attr_dev(div1, "class", "rain_thing rain_probability");
 			attr_dev(div1, "title", div1_title_value = `${/*day*/ ctx[21].pop * 100}%`);
-			add_location(div1, file$1, 316, 14, 8831);
+			add_location(div1, file$1, 317, 14, 8825);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div1, anchor);
@@ -1826,14 +1826,14 @@ function create_else_block$1(ctx) {
 		block,
 		id: create_else_block$1.name,
 		type: "else",
-		source: "(316:12) {:else}",
+		source: "(317:12) {:else}",
 		ctx
 	});
 
 	return block;
 }
 
-// (301:12) {#if day.hours.length > 4}
+// (302:12) {#if day.hours.length > 4}
 function create_if_block_2$1(ctx) {
 	let div;
 	let ul;
@@ -1855,9 +1855,9 @@ function create_if_block_2$1(ctx) {
 			}
 
 			attr_dev(ul, "class", "rain_chance_graph");
-			add_location(ul, file$1, 302, 16, 8301);
+			add_location(ul, file$1, 303, 16, 8295);
 			attr_dev(div, "class", "rain_thing");
-			add_location(div, file$1, 301, 14, 8260);
+			add_location(div, file$1, 302, 14, 8254);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div, anchor);
@@ -1904,14 +1904,14 @@ function create_if_block_2$1(ctx) {
 		block,
 		id: create_if_block_2$1.name,
 		type: "if",
-		source: "(301:12) {#if day.hours.length > 4}",
+		source: "(302:12) {#if day.hours.length > 4}",
 		ctx
 	});
 
 	return block;
 }
 
-// (309:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}
+// (310:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}
 function create_if_block_3(ctx) {
 	let span;
 	let t_value = constants.timeToHour(/*hour*/ ctx[24].dt) + "";
@@ -1921,7 +1921,7 @@ function create_if_block_3(ctx) {
 		c: function create() {
 			span = element("span");
 			t = text(t_value);
-			add_location(span, file$1, 309, 24, 8629);
+			add_location(span, file$1, 310, 24, 8623);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, span, anchor);
@@ -1939,14 +1939,14 @@ function create_if_block_3(ctx) {
 		block,
 		id: create_if_block_3.name,
 		type: "if",
-		source: "(309:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}",
+		source: "(310:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}",
 		ctx
 	});
 
 	return block;
 }
 
-// (304:18) {#each day.hours as hour, h1}
+// (305:18) {#each day.hours as hour, h1}
 function create_each_block_2(ctx) {
 	let li;
 	let show_if = /*h1*/ ctx[26] % Math.ceil(/*day*/ ctx[21].hours.length / 4) == 0;
@@ -1961,7 +1961,7 @@ function create_each_block_2(ctx) {
 			t = space();
 			attr_dev(li, "title", li_title_value = `${/*hour*/ ctx[24].pop * 100}%`);
 			set_style(li, "height", `${/*hour*/ ctx[24].pop * 100}%`);
-			add_location(li, file$1, 304, 20, 8400);
+			add_location(li, file$1, 305, 20, 8394);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, li, anchor);
@@ -2002,14 +2002,14 @@ function create_each_block_2(ctx) {
 		block,
 		id: create_each_block_2.name,
 		type: "each",
-		source: "(304:18) {#each day.hours as hour, h1}",
+		source: "(305:18) {#each day.hours as hour, h1}",
 		ctx
 	});
 
 	return block;
 }
 
-// (256:6) {#each days as day, di}
+// (257:6) {#each days as day, di}
 function create_each_block_1(ctx) {
 	let if_block_anchor;
 	let current;
@@ -2047,14 +2047,14 @@ function create_each_block_1(ctx) {
 		block,
 		id: create_each_block_1.name,
 		type: "each",
-		source: "(256:6) {#each days as day, di}",
+		source: "(257:6) {#each days as day, di}",
 		ctx
 	});
 
 	return block;
 }
 
-// (332:8) {#each constants.available_locations as loc}
+// (333:8) {#each constants.available_locations as loc}
 function create_each_block(ctx) {
 	let a;
 	let t_value = /*loc*/ ctx[18] + "";
@@ -2073,7 +2073,7 @@ function create_each_block(ctx) {
 			attr_dev(a, "href", "#location");
 			attr_dev(a, "class", "button");
 			toggle_class(a, "primary", /*loc*/ ctx[18] == /*location*/ ctx[1].name);
-			add_location(a, file$1, 332, 10, 9270);
+			add_location(a, file$1, 333, 10, 9264);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, a, anchor);
@@ -2102,7 +2102,7 @@ function create_each_block(ctx) {
 		block,
 		id: create_each_block.name,
 		type: "each",
-		source: "(332:8) {#each constants.available_locations as loc}",
+		source: "(333:8) {#each constants.available_locations as loc}",
 		ctx
 	});
 
@@ -2123,7 +2123,7 @@ function create_fragment$1(ctx) {
 			div = element("div");
 			if (if_block) if_block.c();
 			toggle_class(div, "animated", constants.ANIMATED_ICONS);
-			add_location(div, file$1, 252, 0, 6480);
+			add_location(div, file$1, 253, 0, 6474);
 		},
 		l: function claim(nodes) {
 			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2380,21 +2380,23 @@ function instance$1($$self, $$props, $$invalidate) {
 	}
 
 	function focusOnHourByPos(event, day) {
-		if (event.target.nodeName === "UL") {
-			const x = event.layerX;
-			const w = event.target.offsetWidth;
-			const p = x / w;
-			const hl = day.hours.length;
-			const ind = Math.floor(p * hl);
+		let tar = event.target;
 
-			// console.log(event.target);
-			// console.log(x, w, p, hl, ind);
-			const hr = day.hours[ind];
+		while (tar.nodeName !== "UL") {
+			tar = tar.parentElement;
+		}
 
-			if (hr) {
-				if (hr.temp) {
-					focusOnHour(day, day.hours[ind]);
-				}
+		const bb = tar.getBoundingClientRect();
+		const w = bb.width;
+		const x = event.clientX - bb.left;
+		const p = x / w;
+		const hl = day.hours.length;
+		const ind = Math.floor(p * hl);
+		const hr = day.hours[ind];
+
+		if (hr) {
+			if (hr.temp) {
+				focusOnHour(day, day.hours[ind]);
 			}
 		}
 	}
