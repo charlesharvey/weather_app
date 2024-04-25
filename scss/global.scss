@@ -76,8 +76,11 @@ section#seven_days {
         }
 
         &.weather_02d,
+        &.weather_02n,
+        &.weather_04n,
         &.weather_04d,
-        &.weather_03d {
+        &.weather_03d,
+        &.weather_03n {
             border-color: $cloud_color;
 
             h3 .dayOfWeek {
@@ -100,9 +103,20 @@ section#seven_days {
         h3 {
             font-size: 2.3em;
             text-transform: uppercase;
+            position: relative;
 
             .dayOfWeek {
                 color: $brand_color;
+
+            }
+
+            .hour_time {
+                position: absolute;
+                bottom: -30px;
+                width: 100%;
+                left: 0;
+                font-size: 80%;
+                color: transparentize($font_color, 0.5);
 
             }
         }
@@ -285,6 +299,7 @@ section#seven_days {
         position: relative;
         // width: 100%;
 
+
         // &:after {
         //     content: '';
         //     width: 100%;
@@ -295,6 +310,8 @@ section#seven_days {
         //     height: 3px;
         //     border-radius: 5px;
         // }
+
+
 
         span.record_temp {
             opacity: 1;
@@ -324,22 +341,28 @@ section#seven_days {
 
     }
 
-    &.icon_01d {
+    &.icon_01d,
+    &.icon_01n {
+
         //sunny
         background-image: url('../images/weathers/sunny.svg');
     }
 
-    &.icon_10d {
+    &.icon_10d,
+    &.icon_10n {
         //rainy
         background-image: url('../images/weathers/rainy.svg');
 
     }
 
-    &.icon_02d {
+    &.icon_02d,
+    &.icon_02n {
         background-image: url('../images/weathers/sunny_cloudy.svg');
 
     }
 
+    &.icon_03n,
+    &.icon_04n,
     &.icon_03d,
     &.icon_04d {
         //cloudy
@@ -349,13 +372,15 @@ section#seven_days {
 
 
 
-    &.icon_13d {
+    &.icon_13d,
+    &.icon_13n {
         // snowy
         background-image: url('../images/weathers/snowy.svg');
 
     }
 
-    &.icon_50d {
+    &.icon_50d,
+    &.icon_50n {
         // foggy
         background-image: url('../images/weathers/foggy.svg');
 

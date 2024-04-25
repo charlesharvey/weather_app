@@ -1,12 +1,15 @@
 <script>
   import { onMount } from "svelte";
   import constants from "./constants";
+  import WeatherInfo from "./WeatherInfo.svelte";
 
   // https://home.openweathermap.org/api_keys
   // https://openweathermap.org/api/one-call-3#current
 
   let days;
   let location;
+  let focussed_day;
+  let focussed_hour;
   // rio woolwich svalbard bangkok
 
   onMount(() => {
@@ -52,8 +55,12 @@
 
   function processData(data) {
     data.daily.forEach((day, di) => {
-      const date = timeToDate(day.dt);
-      const hours = data.hourly.filter((h) => timeToDate(h.dt) === date);
+      const date = constants.timeToDate(day.dt);
+      const hours = data.hourly.filter(
+        (h) => constants.timeToDate(h.dt) === date
+      );
+
+      const first_hour = hours[0];
       const mxhrs = 23;
       if ((di == 0 || di == 2) && hours.length < mxhrs) {
         while (hours.length < mxhrs) {
@@ -66,10 +73,18 @@
         }
       }
 
+      hours.forEach((h) => {
+        h.time = constants.timeToHour(h.dt);
+      });
+
       day.hours = hours;
 
       // day.temp_line_chart = tempLineChart(hours);
       day.temp_bar_chart = tempBarChart(hours);
+
+      if (di == 0) {
+        focusOnHour(day, first_hour);
+      }
     });
 
     days = data.daily;
@@ -95,15 +110,16 @@
       let rt = false;
       if (h.temp === maxtemp && !maxtaken) {
         maxtaken = true;
-        rt = `${roundTemp(h.temp)}°`;
+        rt = `${constants.roundTemp(h.temp)}°`;
       } else if (h.temp === lowtemp && !mintaken) {
         mintaken = true;
-        rt = `${roundTemp(h.temp)}°`;
+        rt = `${constants.roundTemp(h.temp)}°`;
       }
       return {
-        value: `${roundTemp(h.temp)}`,
+        value: `${constants.roundTemp(h.temp)}`,
         height: he,
         rt: rt,
+        hour: h,
       };
     });
 
@@ -169,41 +185,9 @@
     }
   }
 
-  function roundTemp(a) {
-    return Math.round(a);
-  }
-  function roundSpeed(a) {
-    return Math.round(a);
-  }
-
-  function timeToHour(t) {
-    if (t > 0) {
-      const date = new Date(t * 1000);
-      const options = { hour: "2-digit", hourCycle: "h24" };
-      let i = new Intl.DateTimeFormat("en-US", options).format(date);
-      i = i == 24 ? (i = `00`) : i;
-      return i;
-    }
-    return "";
-  }
-  function timeToDayOfWeek(t) {
-    const date = new Date(t * 1000);
-    const options = { weekday: "short" };
-    const i = new Intl.DateTimeFormat("en-US", options).format(date);
-    return i;
-  }
-
-  function timeToDate(t) {
-    const date = new Date(t * 1000);
-    const options = { day: "2-digit" };
-    const i = new Intl.DateTimeFormat("en-US", options).format(date);
-    return i;
-  }
-
-  function windSpeedAndDirection(speed, deg) {
-    let scale = speed / 10;
-    scale = Math.min(Math.max(scale, 0.5), 1.2);
-    return ` rotate(${deg}deg) scale(${scale})`;
+  function focusOnHour(day, hour) {
+    focussed_hour = hour;
+    focussed_day = day;
   }
 </script>
 
@@ -215,37 +199,11 @@
       {#each days as day, di}
         {#if di < 7}
           <div class="day weather_{day.weather[0].icon}">
-            <h3>
-              <span class="dayOfWeek">{timeToDayOfWeek(day.dt)}</span>
-              <span class="date"> {timeToDate(day.dt)}</span>
-            </h3>
-            <div class="icon icon_{day.weather[0].icon}"></div>
-            <div class="temperatures">
-              <div class="low_temperature">
-                {roundTemp(day.temp.min)}
-                <span class="degree_symbol">&deg;</span>
-                <span class="temperature_unit"> C</span>
-              </div>
-              <div class="high_temperature">
-                {roundTemp(day.temp.max)}
-                <span class="degree_symbol">&deg;</span>
-                <span class="temperature_unit"> C</span>
-              </div>
-            </div>
-            <div class="weather_description">
-              {day.weather[0].main}
-              <span class="wind_speed">
-                <span
-                  style:transform={windSpeedAndDirection(
-                    day.wind_speed,
-                    day.wind_deg
-                  )}
-                  class="icon icon_wind"
-                ></span>
-                {roundSpeed(day.wind_speed)}<span class="wind_units">kmh</span>
-              </span>
-            </div>
-
+            {#if focussed_hour && focussed_day == day}
+              <WeatherInfo day={focussed_hour} />
+            {:else}
+              <WeatherInfo {day} />
+            {/if}
             {#if day.temp_line_chart}
               <div class="temperature_line_graph">
                 {#each day.temp_line_chart as temp, t1}
@@ -269,6 +227,7 @@
                       class="temp"
                       title={`${temp.value}°`}
                       style:height={`${temp.height}%`}
+                      on:mouseover={() => focusOnHour(day, temp.hour)}
                     >
                       {#if temp.rt}
                         <span class="record_temp">{temp.rt}</span>
@@ -288,7 +247,7 @@
                       style:height={`${hour.pop * 100}%`}
                     >
                       {#if h1 % Math.ceil(day.hours.length / 4) == 0}
-                        <span>{timeToHour(hour.dt)}</span>
+                        <span>{constants.timeToHour(hour.dt)}</span>
                       {/if}
                     </li>
                   {/each}

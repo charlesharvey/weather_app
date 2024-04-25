@@ -14,6 +14,42 @@ export default {
   MIN_TEMP: -10,
   available_locations: ["london", "woolwich", "malltraeth"],
   unavailable_locations: ["svalbard", "bangkok", "rio", "cork"],
+  roundTemp: (a) => {
+    return Math.round(a);
+  },
+  windSpeedAndDirection: (speed, deg) => {
+    let scale = speed / 10;
+    scale = Math.min(Math.max(scale, 0.5), 1.2);
+    return ` rotate(${deg}deg) scale(${scale})`;
+  },
+  roundSpeed: (a) => {
+    return Math.round(a);
+  },
+
+  timeToHour: (t) => {
+    if (t > 0) {
+      const date = new Date(t * 1000);
+      const options = { hour: "2-digit", hourCycle: "h24" };
+      let i = new Intl.DateTimeFormat("en-US", options).format(date);
+      i = i == 24 ? (i = `00`) : i;
+      return i;
+    }
+    return "";
+  },
+  timeToDayOfWeek: (t) => {
+    const date = new Date(t * 1000);
+    const options = { weekday: "short" };
+    const i = new Intl.DateTimeFormat("en-US", options).format(date);
+    return i;
+  },
+
+  timeToDate: (t) => {
+    const date = new Date(t * 1000);
+    const options = { day: "2-digit" };
+    const i = new Intl.DateTimeFormat("en-US", options).format(date);
+    return i;
+  },
+
   map: (number, inMin, inMax, outMin, outMax) => {
     return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
   },
