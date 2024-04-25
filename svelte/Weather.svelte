@@ -194,16 +194,20 @@
     while (tar.nodeName !== "UL") {
       tar = tar.parentElement;
     }
-    const bb = tar.getBoundingClientRect();
-    const w = bb.width;
-    const x = event.clientX - bb.left;
-    const p = x / w;
-    const hl = day.hours.length;
-    const ind = Math.floor(p * hl);
-    const hr = day.hours[ind];
-    if (hr) {
-      if (hr.temp) {
-        focusOnHour(day, day.hours[ind]);
+
+    const xx = event.touches ? event.touches[0].clientX : event.clientX;
+    if (xx) {
+      const bb = tar.getBoundingClientRect();
+      const w = bb.width;
+      const x = xx - bb.left;
+      const p = x / w;
+      const hl = day.hours.length;
+      const ind = Math.floor(p * hl);
+      const hr = day.hours[ind];
+      if (hr) {
+        if (hr.temp) {
+          focusOnHour(day, day.hours[ind]);
+        }
       }
     }
   }
@@ -282,6 +286,7 @@
                 <ul
                   class="temperature_bar_chart"
                   on:mousemove={(e) => focusOnHourByPos(e, day)}
+                  on:touchmove={(e) => focusOnHourByPos(e, day)}
                 >
                   {#each day.temp_bar_chart as temp, t1}
                     <li
