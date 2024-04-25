@@ -10,6 +10,7 @@
   let location;
   let focussed_day;
   let focussed_hour;
+  let click_player;
   // rio woolwich svalbard bangkok
 
   onMount(() => {
@@ -188,10 +189,42 @@
     }
   }
 
+  function focusOnHourByPos(event, day) {
+    if (event.target.nodeName === "UL") {
+      const x = event.layerX;
+      const w = event.target.offsetWidth;
+      const p = x / w;
+      const hl = day.hours.length;
+      const ind = Math.floor(p * hl);
+      // console.log(event.target);
+      // console.log(x, w, p, hl, ind);
+      const hr = day.hours[ind];
+      if (hr) {
+        if (hr.temp) {
+          focusOnHour(day, day.hours[ind]);
+        }
+      }
+    }
+  }
+
   function focusOnHour(day, hour) {
     focussed_hour = hour;
     focussed_day = day;
+    //  playClick();
   }
+
+  function playClick() {
+    if (click_player) {
+      click_player.volume = 0.5;
+      click_player.currentTime = 0;
+      click_player.play();
+    }
+  }
+
+  function loadClick() {
+    click_player = new Audio(constants.click_file);
+  }
+
   function handleKeyUp(e) {
     if (e.key == "ArrowRight" || e.key == "ArrowLeft") {
       if (focussed_hour) {
@@ -245,14 +278,17 @@
             {/if}
             {#if day.temp_bar_chart}
               <div class="rain_thing">
-                <ul class="temperature_bar_chart">
+                <ul
+                  class="temperature_bar_chart"
+                  on:mousemove={(e) => focusOnHourByPos(e, day)}
+                >
                   {#each day.temp_bar_chart as temp, t1}
                     <li
                       class="temp"
                       title={`${temp.value}°`}
                       style:height={`${temp.height}%`}
-                      on:mouseover={() => focusOnHour(day, temp.hour)}
                     >
+                      <!-- on:mouseover={() => focusOnHour(day, temp.hour)} -->
                       {#if temp.rt}
                         <span class="record_temp">{temp.rt}</span>
                       {/if}

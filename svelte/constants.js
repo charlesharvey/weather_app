@@ -14,6 +14,7 @@ export default {
   MIN_TEMP: -10,
   available_locations: ["london", "woolwich", "malltraeth"],
   unavailable_locations: ["svalbard", "bangkok", "rio", "cork"],
+  click_file: "audio/tick.mp3",
   roundTemp: (a) => {
     return Math.round(a);
   },
