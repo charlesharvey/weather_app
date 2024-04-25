@@ -346,5 +346,7 @@
         {/each}
       </div>
     </section>
+  {:else}
+    <div class="loading"></div>
   {/if}
 </div>

@@ -20,7 +20,9 @@
 
 
 
-        <div id="svelte-weather"></div>
+        <div id="svelte-weather">
+            <div class="loading"></div>
+        </div>
 
         <script>
             api_key = '<?php echo API_KEY; ?>';

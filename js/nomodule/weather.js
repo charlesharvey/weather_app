@@ -1054,6 +1054,38 @@ System.register('app', [], function (exports) {
             	return child_ctx;
             }
 
+            // (349:2) {:else}
+            function create_else_block_2(ctx) {
+            	let div;
+
+            	const block = {
+            		c: function create() {
+            			div = element("div");
+            			attr_dev(div, "class", "loading");
+            			add_location(div, file$1, 349, 4, 9749);
+            		},
+            		m: function mount(target, anchor) {
+            			insert_dev(target, div, anchor);
+            		},
+            		p: noop,
+            		i: noop,
+            		o: noop,
+            		d: function destroy(detaching) {
+            			if (detaching) detach_dev(div);
+            		}
+            	};
+
+            	dispatch_dev("SvelteRegisterBlock", {
+            		block,
+            		id: create_else_block_2.name,
+            		type: "else",
+            		source: "(349:2) {:else}",
+            		ctx
+            	});
+
+            	return block;
+            }
+
             // (259:2) {#if days}
             function create_if_block$1(ctx) {
             	let section0;
@@ -1229,22 +1261,22 @@ System.register('app', [], function (exports) {
             	const if_block_creators = [create_if_block_7, create_else_block_1];
             	const if_blocks = [];
 
-            	function select_block_type(ctx, dirty) {
+            	function select_block_type_1(ctx, dirty) {
             		if (/*focussed_hour*/ ctx[3] && /*focussed_day*/ ctx[2] == /*day*/ ctx[22]) return 0;
             		return 1;
             	}
 
-            	current_block_type_index = select_block_type(ctx);
+            	current_block_type_index = select_block_type_1(ctx);
             	if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
             	let if_block1 = /*day*/ ctx[22].temp_line_chart && create_if_block_6(ctx);
             	let if_block2 = /*day*/ ctx[22].temp_bar_chart && create_if_block_4(ctx);
 
-            	function select_block_type_1(ctx, dirty) {
+            	function select_block_type_2(ctx, dirty) {
             		if (/*day*/ ctx[22].hours.length > 4) return create_if_block_2$1;
             		return create_else_block$1;
             	}
 
-            	let current_block_type = select_block_type_1(ctx);
+            	let current_block_type = select_block_type_2(ctx);
             	let if_block3 = current_block_type(ctx);
 
             	const block = {
@@ -1275,7 +1307,7 @@ System.register('app', [], function (exports) {
             		},
             		p: function update(ctx, dirty) {
             			let previous_block_index = current_block_type_index;
-            			current_block_type_index = select_block_type(ctx);
+            			current_block_type_index = select_block_type_1(ctx);
 
             			if (current_block_type_index === previous_block_index) {
             				if_blocks[current_block_type_index].p(ctx, dirty);
@@ -1326,7 +1358,7 @@ System.register('app', [], function (exports) {
             				if_block2 = null;
             			}
 
-            			if (current_block_type === (current_block_type = select_block_type_1(ctx)) && if_block3) {
+            			if (current_block_type === (current_block_type = select_block_type_2(ctx)) && if_block3) {
             				if_block3.p(ctx, dirty);
             			} else {
             				if_block3.d(1);
@@ -2128,16 +2160,27 @@ System.register('app', [], function (exports) {
             function create_fragment$1(ctx) {
             	let t;
             	let div;
+            	let current_block_type_index;
+            	let if_block;
             	let current;
             	let mounted;
             	let dispose;
-            	let if_block = /*days*/ ctx[0] && create_if_block$1(ctx);
+            	const if_block_creators = [create_if_block$1, create_else_block_2];
+            	const if_blocks = [];
+
+            	function select_block_type(ctx, dirty) {
+            		if (/*days*/ ctx[0]) return 0;
+            		return 1;
+            	}
+
+            	current_block_type_index = select_block_type(ctx);
+            	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
 
             	const block = {
             		c: function create() {
             			t = space();
             			div = element("div");
-            			if (if_block) if_block.c();
+            			if_block.c();
             			toggle_class(div, "animated", constants.ANIMATED_ICONS);
             			add_location(div, file$1, 257, 0, 6581);
             		},
@@ -2147,7 +2190,7 @@ System.register('app', [], function (exports) {
             		m: function mount(target, anchor) {
             			insert_dev(target, t, anchor);
             			insert_dev(target, div, anchor);
-            			if (if_block) if_block.m(div, null);
+            			if_blocks[current_block_type_index].m(div, null);
             			current = true;
 
             			if (!mounted) {
@@ -2156,27 +2199,30 @@ System.register('app', [], function (exports) {
             			}
             		},
             		p: function update(ctx, dirty) {
-            			if (/*days*/ ctx[0]) {
-            				if (if_block) {
-            					if_block.p(ctx, dirty);
+            			let previous_block_index = current_block_type_index;
+            			current_block_type_index = select_block_type(ctx);
 
-            					if (dirty[0] & /*days*/ 1) {
-            						transition_in(if_block, 1);
-            					}
-            				} else {
-            					if_block = create_if_block$1(ctx);
-            					if_block.c();
-            					transition_in(if_block, 1);
-            					if_block.m(div, null);
-            				}
-            			} else if (if_block) {
+            			if (current_block_type_index === previous_block_index) {
+            				if_blocks[current_block_type_index].p(ctx, dirty);
+            			} else {
             				group_outros();
 
-            				transition_out(if_block, 1, 1, () => {
-            					if_block = null;
+            				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+            					if_blocks[previous_block_index] = null;
             				});
 
             				check_outros();
+            				if_block = if_blocks[current_block_type_index];
+
+            				if (!if_block) {
+            					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+            					if_block.c();
+            				} else {
+            					if_block.p(ctx, dirty);
+            				}
+
+            				transition_in(if_block, 1);
+            				if_block.m(div, null);
             			}
             		},
             		i: function intro(local) {
@@ -2191,7 +2237,7 @@ System.register('app', [], function (exports) {
             		d: function destroy(detaching) {
             			if (detaching) detach_dev(t);
             			if (detaching) detach_dev(div);
-            			if (if_block) if_block.d();
+            			if_blocks[current_block_type_index].d();
             			mounted = false;
             			dispose();
             		}
@@ -2535,8 +2581,10 @@ System.register('app', [], function (exports) {
             	}
             }
 
+            const target = document.querySelector("#svelte-weather");
+            target.innerHTML = "";
             const weather = new Weather({
-              target: document.querySelector("#svelte-weather"),
+              target: target,
               props: {},
             });
             exports('default', weather);
