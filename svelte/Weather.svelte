@@ -91,7 +91,7 @@
       }
     });
 
-    days = data.daily;
+    days = data.daily.splice(0, 6);
   }
 
   function tempBarChart(hours) {

@@ -25,27 +25,26 @@ main {
 
 section#seven_days {
 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 
-
-    @media(min-width: $mobile_width) {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-    }
+    @media(min-width: $mobile_width) {}
 
     .day {
         text-align: center;
         flex: 1;
-        min-width: 150px;
         position: relative;
         // transition: all 0.3s;
         min-height: 400px;
 
         margin: 0 0 30px;
+        min-width: 250px;
 
         @media(min-width: $mobile_width) {
+            min-width: 180px;
             min-height: 320px;
             margin: 0;
 
@@ -240,11 +239,14 @@ section#seven_days {
         border-radius: 2px 2px 0 0;
         // text-indent: -9999px;
         height: 20px;
-        background-color: $rain_color;
         position: relative;
         z-index: 2;
         top: -5px;
-        opacity: 0.5;
+        opacity: 0.3;
+        // background-color: $rain_color;
+        background-image: radial-gradient($rain_color 1px, transparent 0);
+        background-size: 2px 2px;
+
 
         span {
             position: absolute;
@@ -327,8 +329,10 @@ section#seven_days {
 
 
         span.record_temp {
-            opacity: 0.5;
+            opacity: 0.8;
             top: -10px;
+            z-index: 10;
+            text-shadow: 0 1px 0px white, 0 -1px 0 white;
         }
     }
 }
