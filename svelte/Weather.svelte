@@ -54,6 +54,7 @@
   }
 
   function processData(data) {
+    let hourindex = 0;
     data.daily.forEach((day, di) => {
       const date = constants.timeToDate(day.dt);
       const hours = data.hourly.filter(
@@ -75,6 +76,8 @@
 
       hours.forEach((h) => {
         h.time = constants.timeToHour(h.dt);
+        h.index = hourindex;
+        hourindex++;
       });
 
       day.hours = hours;
@@ -189,9 +192,30 @@
     focussed_hour = hour;
     focussed_day = day;
   }
+  function handleKeyUp(e) {
+    if (e.key == "ArrowRight" || e.key == "ArrowLeft") {
+      if (focussed_hour) {
+        let diff = e.key == "ArrowRight" ? 1 : -1;
+        const newindex = focussed_hour.index + diff;
+        let hourchange = null;
+        let daychange = null;
+        days.forEach((day) => {
+          const newhour = day.hours.find((h) => h.index == newindex && h.temp);
+          if (newhour) {
+            daychange = day;
+            hourchange = newhour;
+          }
+        });
+        if (hourchange) {
+          focusOnHour(daychange, hourchange);
+        }
+      }
+    }
+  }
 </script>
 
 <!-- <svelte:head><title>Hello</title></svelte:head> -->
+<svelte:body on:keyup={handleKeyUp} />
 
 <div class:animated={constants.ANIMATED_ICONS}>
   {#if days}
