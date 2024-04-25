@@ -228,8 +228,9 @@ section#seven_days {
 
     li {
         display: block;
-        flex-grow: 0;
-        width: 10px;
+        flex-grow: 1;
+        // flex-grow: 0; 
+        // width: 10px;
         border-radius: 2px 2px 0 0;
         // text-indent: -9999px;
         height: 20px;
@@ -284,7 +285,6 @@ section#seven_days {
     // width: 100%;
     z-index: 3;
     position: relative;
-    opacity: 0.3;
 
     // gap: 0;
     // filter: blur(1px);
@@ -298,6 +298,7 @@ section#seven_days {
         background: linear-gradient(0deg, transparentize($sun_color, 0.8), $sun_color);
         position: relative;
         // width: 100%;
+        opacity: 0.3;
 
 
         // &:after {
@@ -311,6 +312,11 @@ section#seven_days {
         //     border-radius: 5px;
         // }
 
+
+        &.focussed {
+            opacity: 0.8;
+
+        }
 
 
         span.record_temp {

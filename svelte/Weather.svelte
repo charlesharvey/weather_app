@@ -262,9 +262,9 @@
         {#if di < 7}
           <div class="day weather_{day.weather[0].icon}">
             {#if focussed_hour && focussed_day == day}
-              <WeatherInfo day={focussed_hour} />
+              <WeatherInfo period={focussed_hour} />
             {:else}
-              <WeatherInfo {day} />
+              <WeatherInfo period={day} />
             {/if}
             {#if day.temp_line_chart}
               <div class="temperature_line_graph">
@@ -292,6 +292,7 @@
                     <li
                       class="temp"
                       title={`${temp.value}°`}
+                      class:focussed={temp.hour === focussed_hour}
                       style:height={`${temp.height}%`}
                     >
                       <!-- on:mouseover={() => focusOnHour(day, temp.hour)} -->

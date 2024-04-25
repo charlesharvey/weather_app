@@ -2,54 +2,55 @@
   import { onMount } from "svelte";
 
   import constants from "./constants";
-  export let day;
+  export let period;
 
   onMount(() => {});
 </script>
 
 <div>
-  {#if day.weather}
+  {#if period.weather}
     <h3>
-      <span class="dayOfWeek">{constants.timeToDayOfWeek(day.dt)}</span>
-      <span class="date"> {constants.timeToDate(day.dt)}</span>
+      <span class="dayOfWeek">{constants.timeToDayOfWeek(period.dt)}</span>
+      <span class="date"> {constants.timeToDate(period.dt)}</span>
 
-      {#if day.time}
-        <span class="hour_time">{day.time}:00</span>
+      {#if period.time}
+        <span class="hour_time">{period.time}:00</span>
       {/if}
     </h3>
 
-    <div class="icon icon_{day.weather[0].icon}"></div>
+    <div class="icon icon_{period.weather[0].icon}"></div>
     <div class="temperatures">
-      {#if day.temp.min && day.temp.max}
+      {#if period.temp.min && period.temp.max}
         <div class="low_temperature">
-          {constants.roundTemp(day.temp.min)}
+          {constants.roundTemp(period.temp.min)}
           <span class="degree_symbol">&deg;</span>
           <span class="temperature_unit"> C</span>
         </div>
         <div class="high_temperature">
-          {constants.roundTemp(day.temp.max)}
+          {constants.roundTemp(period.temp.max)}
           <span class="degree_symbol">&deg;</span>
           <span class="temperature_unit"> C</span>
         </div>
       {:else}
         <div class="high_temperature">
-          {constants.roundTemp(day.temp)}
+          {constants.roundTemp(period.temp)}
           <span class="degree_symbol">&deg;</span>
           <span class="temperature_unit"> C</span>
         </div>
       {/if}
     </div>
     <div class="weather_description">
-      {day.weather[0].main}
+      {period.weather[0].main}
       <span class="wind_speed">
         <span
           style:transform={constants.windSpeedAndDirection(
-            day.wind_speed,
-            day.wind_deg
+            period.wind_speed,
+            period.wind_deg
           )}
           class="icon icon_wind"
         ></span>
-        {constants.roundSpeed(day.wind_speed)}<span class="wind_units">kmh</span
+        {constants.roundSpeed(period.wind_speed)}<span class="wind_units"
+          >kmh</span
         >
       </span>
     </div>
