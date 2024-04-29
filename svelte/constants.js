@@ -6,13 +6,15 @@ export default {
   svalbard: { name: "svalbard", lat: 78.6196353, lng: 16.8016345 },
   bangkok: { name: "bangkok", lat: 13.7539475, lng: 100.5431602 },
   malltraeth: { name: "malltraeth", lat: 53.1919, lng: -4.3941 },
+  hayonwye: { name: "hayonwye", lat: 52.0738, lng: -3.1399 },
+  portmeirion: { name: "portmeirion", lat: 52.9136, lng: -4.1167 },
   cork: { name: "cork", lat: 51.9, lng: -8.48 },
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
   USE_CACHE: true,
   MAX_TEMP: 45,
   MIN_TEMP: -10,
-  available_locations: ["london", "woolwich", "malltraeth"],
+  available_locations: ["woolwich", "hayonwye", "portmeirion", "malltraeth"],
   unavailable_locations: ["svalbard", "bangkok", "rio", "cork"],
   click_file: "audio/tick.mp3",
   roundTemp: (a) => {
