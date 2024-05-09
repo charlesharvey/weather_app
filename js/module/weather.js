@@ -488,7 +488,7 @@ var constants = {
   cork: { name: "cork", lat: 51.9, lng: -8.48 },
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
-  USE_CACHE: false,
+  USE_CACHE: true,
   MAX_TEMP: 45,
   MIN_TEMP: -10,
   available_locations: ["woolwich", "malltraeth"],
