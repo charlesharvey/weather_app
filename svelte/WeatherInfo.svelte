@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
 
   import constants from "./constants";
+  import { svg_element } from "svelte/internal";
   export let period;
 
   onMount(() => {});
@@ -21,13 +22,13 @@
     <div class="icon icon_{period.weather[0].icon}"></div>
     <div class="temperatures">
       {#if period.temp.min && period.temp.max}
-        <div class="low_temperature">
-          {constants.roundTemp(period.temp.min)}
+        <div class="high_temperature">
+          {constants.roundTemp(period.temp.max)}
           <span class="degree_symbol">&deg;</span>
           <span class="temperature_unit"> C</span>
         </div>
-        <div class="high_temperature">
-          {constants.roundTemp(period.temp.max)}
+        <div class="low_temperature">
+          {constants.roundTemp(period.temp.min)}
           <span class="degree_symbol">&deg;</span>
           <span class="temperature_unit"> C</span>
         </div>

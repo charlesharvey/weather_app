@@ -85,6 +85,7 @@
 
       // day.temp_line_chart = tempLineChart(hours);
       day.temp_bar_chart = tempBarChart(hours);
+      day.temp_svg = tempSVGChart(hours);
 
       if (di == 0) {
         focusOnHour(day, first_hour);
@@ -92,6 +93,25 @@
     });
 
     days = data.daily;
+  }
+
+  function tempSVGChart(hours) {
+    let txy = [];
+    let temps = hours.map((h) => h.temp);
+    temps.forEach((temp, i) => {
+      if (temp) {
+        const x = ((i + 0.5) / temps.length) * 100;
+        const y = constants.map(
+          temp,
+          constants.MIN_TEMP,
+          constants.MAX_TEMP,
+          30,
+          0
+        );
+        txy.push(`${x}, ${y}`);
+      }
+    });
+    return txy.join(",");
   }
 
   function tempBarChart(hours) {
@@ -191,7 +211,9 @@
 
   function focusOnHourByPos(event, day) {
     let tar = event.target;
-    while (tar.nodeName !== "UL") {
+
+    // 'UL'
+    while (tar.nodeName !== "svg") {
       tar = tar.parentElement;
     }
 
@@ -283,11 +305,7 @@
             {/if}
             {#if day.temp_bar_chart}
               <div class="rain_thing">
-                <ul
-                  class="temperature_bar_chart"
-                  on:mousemove={(e) => focusOnHourByPos(e, day)}
-                  on:touchmove={(e) => focusOnHourByPos(e, day)}
-                >
+                <ul class="temperature_bar_chart">
                   {#each day.temp_bar_chart as temp, t1}
                     <li
                       class="temp"
@@ -302,6 +320,22 @@
                     </li>
                   {/each}
                 </ul>
+              </div>
+            {/if}
+
+            {#if day.temp_svg}
+              <div class="rain_thing">
+                <svg
+                  on:mousemove={(e) => focusOnHourByPos(e, day)}
+                  on:touchmove={(e) => focusOnHourByPos(e, day)}
+                  class="sun_line_chart"
+                  height="30"
+                  width="100"
+                  viewBox="0 0 100 30"
+                  preserveAspectRatio="none"
+                >
+                  <polyline points={day.temp_svg} />
+                </svg>
               </div>
             {/if}
 

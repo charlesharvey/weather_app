@@ -11,11 +11,10 @@ export default {
   cork: { name: "cork", lat: 51.9, lng: -8.48 },
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
-  USE_CACHE: true,
+  USE_CACHE: false,
   MAX_TEMP: 45,
   MIN_TEMP: -10,
-  available_locations: ["woolwich", "hayonwye", "portmeirion", "malltraeth"],
-  unavailable_locations: ["svalbard", "bangkok", "rio", "cork"],
+  available_locations: ["woolwich", "malltraeth"],
   click_file: "audio/tick.mp3",
   roundTemp: (a) => {
     return Math.round(a);
