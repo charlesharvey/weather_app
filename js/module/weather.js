@@ -491,7 +491,7 @@ var constants = {
   USE_CACHE: true,
   MAX_TEMP: 45,
   MIN_TEMP: -10,
-  available_locations: ["woolwich", "malltraeth", "rio"],
+  available_locations: ["woolwich", "malltraeth"],
   click_file: "audio/tick.mp3",
   roundTemp: (a) => {
     return Math.round(a);
@@ -1047,7 +1047,7 @@ function get_each_context_3(ctx, list, i) {
 	return child_ctx;
 }
 
-// (422:2) {:else}
+// (398:2) {:else}
 function create_else_block_2(ctx) {
 	let div;
 
@@ -1055,7 +1055,7 @@ function create_else_block_2(ctx) {
 		c: function create() {
 			div = element("div");
 			attr_dev(div, "class", "loading");
-			add_location(div, file$1, 422, 4, 11850);
+			add_location(div, file$1, 398, 4, 11047);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div, anchor);
@@ -1072,14 +1072,14 @@ function create_else_block_2(ctx) {
 		block,
 		id: create_else_block_2.name,
 		type: "else",
-		source: "(422:2) {:else}",
+		source: "(398:2) {:else}",
 		ctx
 	});
 
 	return block;
 }
 
-// (306:2) {#if days}
+// (291:2) {#if days}
 function create_if_block$1(ctx) {
 	let section0;
 	let t;
@@ -1123,10 +1123,10 @@ function create_if_block$1(ctx) {
 			}
 
 			attr_dev(section0, "id", "seven_days");
-			add_location(section0, file$1, 306, 4, 7768);
+			add_location(section0, file$1, 291, 4, 7360);
 			attr_dev(div, "class", "button_group");
-			add_location(div, file$1, 410, 6, 11524);
-			add_location(section1, file$1, 409, 4, 11508);
+			add_location(div, file$1, 386, 6, 10721);
+			add_location(section1, file$1, 385, 4, 10705);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, section0, anchor);
@@ -1233,14 +1233,14 @@ function create_if_block$1(ctx) {
 		block,
 		id: create_if_block$1.name,
 		type: "if",
-		source: "(306:2) {#if days}",
+		source: "(291:2) {#if days}",
 		ctx
 	});
 
 	return block;
 }
 
-// (309:8) {#if di < 7}
+// (294:8) {#if di < 7}
 function create_if_block_1$1(ctx) {
 	let div;
 	let current_block_type_index;
@@ -1280,7 +1280,7 @@ function create_if_block_1$1(ctx) {
 			if_block2.c();
 			t2 = space();
 			attr_dev(div, "class", div_class_value = "day weather_" + /*day*/ ctx[23].weather[0].icon);
-			add_location(div, file$1, 309, 10, 7855);
+			add_location(div, file$1, 294, 10, 7447);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div, anchor);
@@ -1370,14 +1370,14 @@ function create_if_block_1$1(ctx) {
 		block,
 		id: create_if_block_1$1.name,
 		type: "if",
-		source: "(309:8) {#if di < 7}",
+		source: "(294:8) {#if di < 7}",
 		ctx
 	});
 
 	return block;
 }
 
-// (313:12) {:else}
+// (298:12) {:else}
 function create_else_block_1(ctx) {
 	let weatherinfo;
 	let current;
@@ -1418,14 +1418,14 @@ function create_else_block_1(ctx) {
 		block,
 		id: create_else_block_1.name,
 		type: "else",
-		source: "(313:12) {:else}",
+		source: "(298:12) {:else}",
 		ctx
 	});
 
 	return block;
 }
 
-// (311:12) {#if focussed_hour && focussed_day == day}
+// (296:12) {#if focussed_hour && focussed_day == day}
 function create_if_block_5(ctx) {
 	let weatherinfo;
 	let current;
@@ -1466,20 +1466,17 @@ function create_if_block_5(ctx) {
 		block,
 		id: create_if_block_5.name,
 		type: "if",
-		source: "(311:12) {#if focussed_hour && focussed_day == day}",
+		source: "(296:12) {#if focussed_hour && focussed_day == day}",
 		ctx
 	});
 
 	return block;
 }
 
-// (350:12) {#if day.temp_svg}
+// (335:12) {#if day.temp_svg}
 function create_if_block_4(ctx) {
 	let div;
 	let svg;
-	let linearGradient;
-	let stop0;
-	let stop1;
 	let polyline;
 	let polyline_points_value;
 	let svg_viewBox_value;
@@ -1505,47 +1502,26 @@ function create_if_block_4(ctx) {
 		c: function create() {
 			div = element("div");
 			svg = svg_element("svg");
-			linearGradient = svg_element("linearGradient");
-			stop0 = svg_element("stop");
-			stop1 = svg_element("stop");
 			polyline = svg_element("polyline");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			attr_dev(stop0, "class", "stop1");
-			attr_dev(stop0, "stop-color", "#ddbf48");
-			attr_dev(stop0, "offset", "0%");
-			add_location(stop0, file$1, 361, 20, 9876);
-			attr_dev(stop1, "class", "stop3");
-			attr_dev(stop1, "stop-color", "#ddbf48");
-			attr_dev(stop1, "stop-opacity", "0.1");
-			attr_dev(stop1, "offset", "100%");
-			add_location(stop1, file$1, 362, 20, 9952);
-			attr_dev(linearGradient, "id", "Gradient1");
-			attr_dev(linearGradient, "x1", "0");
-			attr_dev(linearGradient, "x2", "0");
-			attr_dev(linearGradient, "y1", "0");
-			attr_dev(linearGradient, "y2", "1");
-			add_location(linearGradient, file$1, 360, 18, 9796);
 			attr_dev(polyline, "points", polyline_points_value = /*day*/ ctx[23].temp_svg.polyline);
-			add_location(polyline, file$1, 369, 18, 10191);
+			add_location(polyline, file$1, 345, 18, 9388);
 			attr_dev(svg, "class", "sun_line_chart");
 			attr_dev(svg, "height", svg_height);
 			attr_dev(svg, "width", "100");
 			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 100 " + svg_height);
 			attr_dev(svg, "preserveAspectRatio", "none");
-			add_location(svg, file$1, 351, 16, 9422);
+			add_location(svg, file$1, 336, 16, 9014);
 			attr_dev(div, "class", "rain_thing");
-			add_location(div, file$1, 350, 14, 9381);
+			add_location(div, file$1, 335, 14, 8973);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div, anchor);
 			append_dev(div, svg);
-			append_dev(svg, linearGradient);
-			append_dev(linearGradient, stop0);
-			append_dev(linearGradient, stop1);
 			append_dev(svg, polyline);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -1606,14 +1582,14 @@ function create_if_block_4(ctx) {
 		block,
 		id: create_if_block_4.name,
 		type: "if",
-		source: "(350:12) {#if day.temp_svg}",
+		source: "(335:12) {#if day.temp_svg}",
 		ctx
 	});
 
 	return block;
 }
 
-// (371:18) {#each day.temp_svg.polygons as polygon}
+// (347:18) {#each day.temp_svg.polygons as polygon}
 function create_each_block_3(ctx) {
 	let polygon;
 	let polygon_points_value;
@@ -1623,7 +1599,7 @@ function create_each_block_3(ctx) {
 			polygon = svg_element("polygon");
 			attr_dev(polygon, "points", polygon_points_value = /*polygon*/ ctx[29].points);
 			toggle_class(polygon, "focussed", /*polygon*/ ctx[29].hour === /*focussed_hour*/ ctx[3]);
-			add_location(polygon, file$1, 371, 20, 10314);
+			add_location(polygon, file$1, 347, 20, 9511);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, polygon, anchor);
@@ -1646,14 +1622,14 @@ function create_each_block_3(ctx) {
 		block,
 		id: create_each_block_3.name,
 		type: "each",
-		source: "(371:18) {#each day.temp_svg.polygons as polygon}",
+		source: "(347:18) {#each day.temp_svg.polygons as polygon}",
 		ctx
 	});
 
 	return block;
 }
 
-// (396:12) {:else}
+// (372:12) {:else}
 function create_else_block$1(ctx) {
 	let div1;
 	let div0;
@@ -1665,10 +1641,10 @@ function create_else_block$1(ctx) {
 			div0 = element("div");
 			attr_dev(div0, "class", "rain_inner");
 			set_style(div0, "width", `${/*day*/ ctx[23].pop * 100}%`);
-			add_location(div0, file$1, 400, 16, 11308);
+			add_location(div0, file$1, 376, 16, 10505);
 			attr_dev(div1, "class", "rain_thing rain_probability");
 			attr_dev(div1, "title", div1_title_value = `${/*day*/ ctx[23].pop * 100}%`);
-			add_location(div1, file$1, 396, 14, 11175);
+			add_location(div1, file$1, 372, 14, 10372);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div1, anchor);
@@ -1692,14 +1668,14 @@ function create_else_block$1(ctx) {
 		block,
 		id: create_else_block$1.name,
 		type: "else",
-		source: "(396:12) {:else}",
+		source: "(372:12) {:else}",
 		ctx
 	});
 
 	return block;
 }
 
-// (381:12) {#if day.hours.length > 4}
+// (357:12) {#if day.hours.length > 4}
 function create_if_block_2$1(ctx) {
 	let div;
 	let ul;
@@ -1721,9 +1697,9 @@ function create_if_block_2$1(ctx) {
 			}
 
 			attr_dev(ul, "class", "rain_chance_graph");
-			add_location(ul, file$1, 382, 16, 10645);
+			add_location(ul, file$1, 358, 16, 9842);
 			attr_dev(div, "class", "rain_thing");
-			add_location(div, file$1, 381, 14, 10604);
+			add_location(div, file$1, 357, 14, 9801);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, div, anchor);
@@ -1770,14 +1746,14 @@ function create_if_block_2$1(ctx) {
 		block,
 		id: create_if_block_2$1.name,
 		type: "if",
-		source: "(381:12) {#if day.hours.length > 4}",
+		source: "(357:12) {#if day.hours.length > 4}",
 		ctx
 	});
 
 	return block;
 }
 
-// (389:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}
+// (365:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}
 function create_if_block_3(ctx) {
 	let span;
 	let t_value = constants.timeToHour(/*hour*/ ctx[26].dt) + "";
@@ -1787,7 +1763,7 @@ function create_if_block_3(ctx) {
 		c: function create() {
 			span = element("span");
 			t = text(t_value);
-			add_location(span, file$1, 389, 24, 10973);
+			add_location(span, file$1, 365, 24, 10170);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, span, anchor);
@@ -1805,14 +1781,14 @@ function create_if_block_3(ctx) {
 		block,
 		id: create_if_block_3.name,
 		type: "if",
-		source: "(389:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}",
+		source: "(365:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}",
 		ctx
 	});
 
 	return block;
 }
 
-// (384:18) {#each day.hours as hour, h1}
+// (360:18) {#each day.hours as hour, h1}
 function create_each_block_2(ctx) {
 	let li;
 	let show_if = /*h1*/ ctx[28] % Math.ceil(/*day*/ ctx[23].hours.length / 4) == 0;
@@ -1827,7 +1803,7 @@ function create_each_block_2(ctx) {
 			t = space();
 			attr_dev(li, "title", li_title_value = `${/*hour*/ ctx[26].pop * 100}%`);
 			set_style(li, "height", `${/*hour*/ ctx[26].pop * 100}%`);
-			add_location(li, file$1, 384, 20, 10744);
+			add_location(li, file$1, 360, 20, 9941);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, li, anchor);
@@ -1868,14 +1844,14 @@ function create_each_block_2(ctx) {
 		block,
 		id: create_each_block_2.name,
 		type: "each",
-		source: "(384:18) {#each day.hours as hour, h1}",
+		source: "(360:18) {#each day.hours as hour, h1}",
 		ctx
 	});
 
 	return block;
 }
 
-// (308:6) {#each days as day, di}
+// (293:6) {#each days as day, di}
 function create_each_block_1(ctx) {
 	let if_block_anchor;
 	let current;
@@ -1913,14 +1889,14 @@ function create_each_block_1(ctx) {
 		block,
 		id: create_each_block_1.name,
 		type: "each",
-		source: "(308:6) {#each days as day, di}",
+		source: "(293:6) {#each days as day, di}",
 		ctx
 	});
 
 	return block;
 }
 
-// (412:8) {#each constants.available_locations as loc}
+// (388:8) {#each constants.available_locations as loc}
 function create_each_block(ctx) {
 	let a;
 	let t_value = /*loc*/ ctx[20] + "";
@@ -1939,7 +1915,7 @@ function create_each_block(ctx) {
 			attr_dev(a, "href", "#location");
 			attr_dev(a, "class", "button");
 			toggle_class(a, "primary", /*loc*/ ctx[20] == /*location*/ ctx[1].name);
-			add_location(a, file$1, 412, 10, 11614);
+			add_location(a, file$1, 388, 10, 10811);
 		},
 		m: function mount(target, anchor) {
 			insert_dev(target, a, anchor);
@@ -1968,7 +1944,7 @@ function create_each_block(ctx) {
 		block,
 		id: create_each_block.name,
 		type: "each",
-		source: "(412:8) {#each constants.available_locations as loc}",
+		source: "(388:8) {#each constants.available_locations as loc}",
 		ctx
 	});
 
@@ -1976,10 +1952,15 @@ function create_each_block(ctx) {
 }
 
 function create_fragment$1(ctx) {
-	let t;
+	let t0;
 	let div;
 	let current_block_type_index;
 	let if_block;
+	let t1;
+	let svg;
+	let linearGradient;
+	let stop0;
+	let stop1;
 	let current;
 	let mounted;
 	let dispose;
@@ -1996,19 +1977,43 @@ function create_fragment$1(ctx) {
 
 	const block = {
 		c: function create() {
-			t = space();
+			t0 = space();
 			div = element("div");
 			if_block.c();
+			t1 = space();
+			svg = svg_element("svg");
+			linearGradient = svg_element("linearGradient");
+			stop0 = svg_element("stop");
+			stop1 = svg_element("stop");
+			attr_dev(stop0, "stop-color", "#ddbf48");
+			attr_dev(stop0, "offset", "0%");
+			add_location(stop0, file$1, 403, 6, 11162);
+			attr_dev(stop1, "stop-color", "#ddbf48");
+			attr_dev(stop1, "stop-opacity", "0.1");
+			attr_dev(stop1, "offset", "100%");
+			add_location(stop1, file$1, 404, 6, 11210);
+			attr_dev(linearGradient, "id", "Gradient1");
+			attr_dev(linearGradient, "x1", "0");
+			attr_dev(linearGradient, "x2", "0");
+			attr_dev(linearGradient, "y1", "0");
+			attr_dev(linearGradient, "y2", "1");
+			add_location(linearGradient, file$1, 402, 4, 11096);
+			add_location(svg, file$1, 401, 2, 11086);
 			toggle_class(div, "animated", constants.ANIMATED_ICONS);
-			add_location(div, file$1, 304, 0, 7703);
+			add_location(div, file$1, 289, 0, 7295);
 		},
 		l: function claim(nodes) {
 			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
 		},
 		m: function mount(target, anchor) {
-			insert_dev(target, t, anchor);
+			insert_dev(target, t0, anchor);
 			insert_dev(target, div, anchor);
 			if_blocks[current_block_type_index].m(div, null);
+			append_dev(div, t1);
+			append_dev(div, svg);
+			append_dev(svg, linearGradient);
+			append_dev(linearGradient, stop0);
+			append_dev(linearGradient, stop1);
 			current = true;
 
 			if (!mounted) {
@@ -2040,7 +2045,7 @@ function create_fragment$1(ctx) {
 				}
 
 				transition_in(if_block, 1);
-				if_block.m(div, null);
+				if_block.m(div, t1);
 			}
 		},
 		i: function intro(local) {
@@ -2053,7 +2058,7 @@ function create_fragment$1(ctx) {
 			current = false;
 		},
 		d: function destroy(detaching) {
-			if (detaching) detach_dev(t);
+			if (detaching) detach_dev(t0);
 			if (detaching) detach_dev(div);
 			if_blocks[current_block_type_index].d();
 			mounted = false;
@@ -2093,26 +2098,13 @@ function instance$1($$self, $$props, $$invalidate) {
 	let focussed_hour;
 	let click_player;
 
-	// rio woolwich svalbard bangkok
 	onMount(() => {
 		const last_location = getLastLocation();
 		chooseLocation(last_location);
 	});
 
 	function chooseLocation(loc) {
-		// if (loc === "bangkok") {
-		//   location = constants.bangkok;
-		// } else if (loc === "rio") {
-		//   location = constants.rio;
-		// } else if (loc === "svalbard") {
-		//   location = constants.svalbard;
-		// } else if (loc === "malltraeth") {
-		//   location = constants.malltraeth;
-		// } else {
-		//   location = constants.woolwich;
-		// }
 		$$invalidate(1, location = constants[loc]);
-
 		localStorage.setItem(`weather_last_location`, loc);
 		getWeatherData();
 	}

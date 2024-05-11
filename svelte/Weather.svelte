@@ -12,7 +12,6 @@
   let focussed_hour;
   let click_player;
   const svg_height = 70;
-  // rio woolwich svalbard bangkok
 
   onMount(() => {
     const last_location = getLastLocation();
@@ -20,22 +19,8 @@
   });
 
   function chooseLocation(loc) {
-    // if (loc === "bangkok") {
-    //   location = constants.bangkok;
-    // } else if (loc === "rio") {
-    //   location = constants.rio;
-    // } else if (loc === "svalbard") {
-    //   location = constants.svalbard;
-    // } else if (loc === "malltraeth") {
-    //   location = constants.malltraeth;
-    // } else {
-    //   location = constants.woolwich;
-    // }
-
     location = constants[loc];
-
     localStorage.setItem(`weather_last_location`, loc);
-
     getWeatherData();
   }
 
@@ -358,15 +343,6 @@
                   viewBox="0 0 100 {svg_height}"
                   preserveAspectRatio="none"
                 >
-                  <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
-                    <stop class="stop1" stop-color="#ddbf48" offset="0%" />
-                    <stop
-                      class="stop3"
-                      stop-color="#ddbf48"
-                      stop-opacity="0.1"
-                      offset="100%"
-                    />
-                  </linearGradient>
                   <polyline points={day.temp_svg.polyline} />
                   {#each day.temp_svg.polygons as polygon}
                     <polygon
@@ -422,4 +398,11 @@
   {:else}
     <div class="loading"></div>
   {/if}
+
+  <svg>
+    <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
+      <stop stop-color="#ddbf48" offset="0%" />
+      <stop stop-color="#ddbf48" stop-opacity="0.1" offset="100%" />
+    </linearGradient>
+  </svg>
 </div>

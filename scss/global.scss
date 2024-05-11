@@ -446,26 +446,32 @@ section#seven_days {
 
 .animated {
     .icon {
-        &.icon_01d {
+
+        &.icon_01d,
+        &.icon_01n {
             //sunny
             background-image: url('../images/amcharts/animated/day.svg');
         }
 
-        &.icon_10d {
+        &.icon_10d,
+        &.icon_10n {
             //rainy
             background-image: url('../images/amcharts/animated/rainy-6.svg');
 
         }
 
-        &.icon_02d,
+
+        &.icon_03n,
         &.icon_03d,
+        &.icon_04n,
         &.icon_04d {
             //cloudy
             background-image: url('../images/amcharts/animated/cloudy.svg');
 
         }
 
-        &.icon_02d {
+        &.icon_02d,
+        &.icon_02n {
             background-image: url('../images/amcharts/animated/cloudy-day-1.svg');
 
         }

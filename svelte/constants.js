@@ -14,7 +14,7 @@ export default {
   USE_CACHE: true,
   MAX_TEMP: 45,
   MIN_TEMP: -10,
-  available_locations: ["woolwich", "malltraeth", "rio"],
+  available_locations: ["woolwich", "malltraeth"],
   click_file: "audio/tick.mp3",
   roundTemp: (a) => {
     return Math.round(a);
