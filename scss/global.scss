@@ -117,7 +117,7 @@ section#seven_days {
 
             .hour_time {
                 position: absolute;
-                bottom: -30px;
+                bottom: -20px;
                 width: 100%;
                 left: 0;
                 font-size: 80%;
@@ -221,9 +221,8 @@ section#seven_days {
     position: relative;
 
     @media(min-width: $mobile_width) {
-        height: 30px;
-
-
+        height: 70px;
+        opacity: 0.9;
     }
 
     &:after {
@@ -284,6 +283,17 @@ section#seven_days {
 
         @media(min-width: $mobile_width) {
             stroke-width: 2;
+        }
+    }
+
+    polygon {
+        fill: lighten($sun_color, 10);
+        fill: url(#Gradient1);
+        opacity: 0.5;
+        transition: all 0.3s;
+
+        &.focussed {
+            opacity: 0.7;
         }
     }
 }
@@ -370,13 +380,13 @@ section#seven_days {
     width: 100%;
     height: 150px;
 
-    background-position: center center;
+    background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 170px;
 
 
     @media(min-width: $mobile_width) {
-        height: 140px;
+        height: 110px;
         background-size: 100px;
 
 

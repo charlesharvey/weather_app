@@ -494,7 +494,7 @@ System.register('app', [], function (exports) {
               USE_CACHE: true,
               MAX_TEMP: 45,
               MIN_TEMP: -10,
-              available_locations: ["woolwich", "malltraeth"],
+              available_locations: ["woolwich", "malltraeth", "rio"],
               click_file: "audio/tick.mp3",
               roundTemp: (a) => {
                 return Math.round(a);
@@ -1047,18 +1047,10 @@ System.register('app', [], function (exports) {
             function get_each_context_3(ctx, list, i) {
             	const child_ctx = ctx.slice();
             	child_ctx[29] = list[i];
-            	child_ctx[31] = i;
             	return child_ctx;
             }
 
-            function get_each_context_4(ctx, list, i) {
-            	const child_ctx = ctx.slice();
-            	child_ctx[29] = list[i];
-            	child_ctx[31] = i;
-            	return child_ctx;
-            }
-
-            // (383:2) {:else}
+            // (422:2) {:else}
             function create_else_block_2(ctx) {
             	let div;
 
@@ -1066,7 +1058,7 @@ System.register('app', [], function (exports) {
             		c: function create() {
             			div = element("div");
             			attr_dev(div, "class", "loading");
-            			add_location(div, file$1, 383, 4, 10601);
+            			add_location(div, file$1, 422, 4, 11850);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -1083,14 +1075,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_else_block_2.name,
             		type: "else",
-            		source: "(383:2) {:else}",
+            		source: "(422:2) {:else}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (281:2) {#if days}
+            // (306:2) {#if days}
             function create_if_block$1(ctx) {
             	let section0;
             	let t;
@@ -1134,10 +1126,10 @@ System.register('app', [], function (exports) {
             			}
 
             			attr_dev(section0, "id", "seven_days");
-            			add_location(section0, file$1, 281, 4, 7123);
+            			add_location(section0, file$1, 306, 4, 7768);
             			attr_dev(div, "class", "button_group");
-            			add_location(div, file$1, 371, 6, 10275);
-            			add_location(section1, file$1, 370, 4, 10259);
+            			add_location(div, file$1, 410, 6, 11524);
+            			add_location(section1, file$1, 409, 4, 11508);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, section0, anchor);
@@ -1244,26 +1236,24 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block$1.name,
             		type: "if",
-            		source: "(281:2) {#if days}",
+            		source: "(306:2) {#if days}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (284:8) {#if di < 7}
+            // (309:8) {#if di < 7}
             function create_if_block_1$1(ctx) {
             	let div;
             	let current_block_type_index;
             	let if_block0;
             	let t0;
             	let t1;
-            	let t2;
-            	let t3;
             	let div_class_value;
-            	let t4;
+            	let t2;
             	let current;
-            	const if_block_creators = [create_if_block_8, create_else_block_1];
+            	const if_block_creators = [create_if_block_5, create_else_block_1];
             	const if_blocks = [];
 
             	function select_block_type_1(ctx, dirty) {
@@ -1273,9 +1263,7 @@ System.register('app', [], function (exports) {
 
             	current_block_type_index = select_block_type_1(ctx);
             	if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-            	let if_block1 = /*day*/ ctx[23].temp_line_chart && create_if_block_7(ctx);
-            	let if_block2 = /*day*/ ctx[23].temp_bar_chart && create_if_block_5(ctx);
-            	let if_block3 = /*day*/ ctx[23].temp_svg && create_if_block_4(ctx);
+            	let if_block1 = /*day*/ ctx[23].temp_svg && create_if_block_4(ctx);
 
             	function select_block_type_2(ctx, dirty) {
             		if (/*day*/ ctx[23].hours.length > 4) return create_if_block_2$1;
@@ -1283,7 +1271,7 @@ System.register('app', [], function (exports) {
             	}
 
             	let current_block_type = select_block_type_2(ctx);
-            	let if_block4 = current_block_type(ctx);
+            	let if_block2 = current_block_type(ctx);
 
             	const block = {
             		c: function create() {
@@ -1292,14 +1280,10 @@ System.register('app', [], function (exports) {
             			t0 = space();
             			if (if_block1) if_block1.c();
             			t1 = space();
-            			if (if_block2) if_block2.c();
+            			if_block2.c();
             			t2 = space();
-            			if (if_block3) if_block3.c();
-            			t3 = space();
-            			if_block4.c();
-            			t4 = space();
             			attr_dev(div, "class", div_class_value = "day weather_" + /*day*/ ctx[23].weather[0].icon);
-            			add_location(div, file$1, 284, 10, 7210);
+            			add_location(div, file$1, 309, 10, 7855);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -1307,12 +1291,8 @@ System.register('app', [], function (exports) {
             			append_dev(div, t0);
             			if (if_block1) if_block1.m(div, null);
             			append_dev(div, t1);
-            			if (if_block2) if_block2.m(div, null);
-            			append_dev(div, t2);
-            			if (if_block3) if_block3.m(div, null);
-            			append_dev(div, t3);
-            			if_block4.m(div, null);
-            			insert_dev(target, t4, anchor);
+            			if_block2.m(div, null);
+            			insert_dev(target, t2, anchor);
             			current = true;
             		},
             		p: function update(ctx, dirty) {
@@ -1342,11 +1322,11 @@ System.register('app', [], function (exports) {
             				if_block0.m(div, t0);
             			}
 
-            			if (/*day*/ ctx[23].temp_line_chart) {
+            			if (/*day*/ ctx[23].temp_svg) {
             				if (if_block1) {
             					if_block1.p(ctx, dirty);
             				} else {
-            					if_block1 = create_if_block_7(ctx);
+            					if_block1 = create_if_block_4(ctx);
             					if_block1.c();
             					if_block1.m(div, t1);
             				}
@@ -1355,41 +1335,15 @@ System.register('app', [], function (exports) {
             				if_block1 = null;
             			}
 
-            			if (/*day*/ ctx[23].temp_bar_chart) {
-            				if (if_block2) {
-            					if_block2.p(ctx, dirty);
-            				} else {
-            					if_block2 = create_if_block_5(ctx);
-            					if_block2.c();
-            					if_block2.m(div, t2);
-            				}
-            			} else if (if_block2) {
-            				if_block2.d(1);
-            				if_block2 = null;
-            			}
-
-            			if (/*day*/ ctx[23].temp_svg) {
-            				if (if_block3) {
-            					if_block3.p(ctx, dirty);
-            				} else {
-            					if_block3 = create_if_block_4(ctx);
-            					if_block3.c();
-            					if_block3.m(div, t3);
-            				}
-            			} else if (if_block3) {
-            				if_block3.d(1);
-            				if_block3 = null;
-            			}
-
-            			if (current_block_type === (current_block_type = select_block_type_2(ctx)) && if_block4) {
-            				if_block4.p(ctx, dirty);
+            			if (current_block_type === (current_block_type = select_block_type_2(ctx)) && if_block2) {
+            				if_block2.p(ctx, dirty);
             			} else {
-            				if_block4.d(1);
-            				if_block4 = current_block_type(ctx);
+            				if_block2.d(1);
+            				if_block2 = current_block_type(ctx);
 
-            				if (if_block4) {
-            					if_block4.c();
-            					if_block4.m(div, null);
+            				if (if_block2) {
+            					if_block2.c();
+            					if_block2.m(div, null);
             				}
             			}
 
@@ -1410,10 +1364,8 @@ System.register('app', [], function (exports) {
             			if (detaching) detach_dev(div);
             			if_blocks[current_block_type_index].d();
             			if (if_block1) if_block1.d();
-            			if (if_block2) if_block2.d();
-            			if (if_block3) if_block3.d();
-            			if_block4.d();
-            			if (detaching) detach_dev(t4);
+            			if_block2.d();
+            			if (detaching) detach_dev(t2);
             		}
             	};
 
@@ -1421,14 +1373,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block_1$1.name,
             		type: "if",
-            		source: "(284:8) {#if di < 7}",
+            		source: "(309:8) {#if di < 7}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (288:12) {:else}
+            // (313:12) {:else}
             function create_else_block_1(ctx) {
             	let weatherinfo;
             	let current;
@@ -1469,15 +1421,15 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_else_block_1.name,
             		type: "else",
-            		source: "(288:12) {:else}",
+            		source: "(313:12) {:else}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (286:12) {#if focussed_hour && focussed_day == day}
-            function create_if_block_8(ctx) {
+            // (311:12) {#if focussed_hour && focussed_day == day}
+            function create_if_block_5(ctx) {
             	let weatherinfo;
             	let current;
 
@@ -1515,335 +1467,34 @@ System.register('app', [], function (exports) {
 
             	dispatch_dev("SvelteRegisterBlock", {
             		block,
-            		id: create_if_block_8.name,
+            		id: create_if_block_5.name,
             		type: "if",
-            		source: "(286:12) {#if focussed_hour && focussed_day == day}",
+            		source: "(311:12) {#if focussed_hour && focussed_day == day}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (291:12) {#if day.temp_line_chart}
-            function create_if_block_7(ctx) {
+            // (350:12) {#if day.temp_svg}
+            function create_if_block_4(ctx) {
             	let div;
-            	let each_value_4 = /*day*/ ctx[23].temp_line_chart;
-            	validate_each_argument(each_value_4);
-            	let each_blocks = [];
-
-            	for (let i = 0; i < each_value_4.length; i += 1) {
-            		each_blocks[i] = create_each_block_4(get_each_context_4(ctx, each_value_4, i));
-            	}
-
-            	const block = {
-            		c: function create() {
-            			div = element("div");
-
-            			for (let i = 0; i < each_blocks.length; i += 1) {
-            				each_blocks[i].c();
-            			}
-
-            			attr_dev(div, "class", "temperature_line_graph");
-            			add_location(div, file$1, 291, 14, 7499);
-            		},
-            		m: function mount(target, anchor) {
-            			insert_dev(target, div, anchor);
-
-            			for (let i = 0; i < each_blocks.length; i += 1) {
-            				if (each_blocks[i]) {
-            					each_blocks[i].m(div, null);
-            				}
-            			}
-            		},
-            		p: function update(ctx, dirty) {
-            			if (dirty[0] & /*days*/ 1) {
-            				each_value_4 = /*day*/ ctx[23].temp_line_chart;
-            				validate_each_argument(each_value_4);
-            				let i;
-
-            				for (i = 0; i < each_value_4.length; i += 1) {
-            					const child_ctx = get_each_context_4(ctx, each_value_4, i);
-
-            					if (each_blocks[i]) {
-            						each_blocks[i].p(child_ctx, dirty);
-            					} else {
-            						each_blocks[i] = create_each_block_4(child_ctx);
-            						each_blocks[i].c();
-            						each_blocks[i].m(div, null);
-            					}
-            				}
-
-            				for (; i < each_blocks.length; i += 1) {
-            					each_blocks[i].d(1);
-            				}
-
-            				each_blocks.length = each_value_4.length;
-            			}
-            		},
-            		d: function destroy(detaching) {
-            			if (detaching) detach_dev(div);
-            			destroy_each(each_blocks, detaching);
-            		}
-            	};
-
-            	dispatch_dev("SvelteRegisterBlock", {
-            		block,
-            		id: create_if_block_7.name,
-            		type: "if",
-            		source: "(291:12) {#if day.temp_line_chart}",
-            		ctx
-            	});
-
-            	return block;
-            }
-
-            // (293:16) {#each day.temp_line_chart as temp, t1}
-            function create_each_block_4(ctx) {
-            	let div;
-            	let t0_value = /*temp*/ ctx[29].value + "";
-            	let t0;
-            	let t1_1;
-
-            	const block = {
-            		c: function create() {
-            			div = element("div");
-            			t0 = text(t0_value);
-            			t1_1 = space();
-            			attr_dev(div, "class", "temp");
-            			set_style(div, "top", `${/*temp*/ ctx[29].oldy}%`);
-            			set_style(div, "left", `${/*temp*/ ctx[29].oldx}%`);
-            			set_style(div, "width", `${/*temp*/ ctx[29].length}%`);
-            			set_style(div, "transform", `rotate(${/*temp*/ ctx[29].theta}deg)`);
-            			add_location(div, file$1, 293, 18, 7610);
-            		},
-            		m: function mount(target, anchor) {
-            			insert_dev(target, div, anchor);
-            			append_dev(div, t0);
-            			append_dev(div, t1_1);
-            		},
-            		p: function update(ctx, dirty) {
-            			if (dirty[0] & /*days*/ 1 && t0_value !== (t0_value = /*temp*/ ctx[29].value + "")) set_data_dev(t0, t0_value);
-
-            			if (dirty[0] & /*days*/ 1) {
-            				set_style(div, "top", `${/*temp*/ ctx[29].oldy}%`);
-            			}
-
-            			if (dirty[0] & /*days*/ 1) {
-            				set_style(div, "left", `${/*temp*/ ctx[29].oldx}%`);
-            			}
-
-            			if (dirty[0] & /*days*/ 1) {
-            				set_style(div, "width", `${/*temp*/ ctx[29].length}%`);
-            			}
-
-            			if (dirty[0] & /*days*/ 1) {
-            				set_style(div, "transform", `rotate(${/*temp*/ ctx[29].theta}deg)`);
-            			}
-            		},
-            		d: function destroy(detaching) {
-            			if (detaching) detach_dev(div);
-            		}
-            	};
-
-            	dispatch_dev("SvelteRegisterBlock", {
-            		block,
-            		id: create_each_block_4.name,
-            		type: "each",
-            		source: "(293:16) {#each day.temp_line_chart as temp, t1}",
-            		ctx
-            	});
-
-            	return block;
-            }
-
-            // (306:12) {#if day.temp_bar_chart}
-            function create_if_block_5(ctx) {
-            	let div;
-            	let ul;
-            	let each_value_3 = /*day*/ ctx[23].temp_bar_chart;
+            	let svg;
+            	let linearGradient;
+            	let stop0;
+            	let stop1;
+            	let polyline;
+            	let polyline_points_value;
+            	let svg_viewBox_value;
+            	let mounted;
+            	let dispose;
+            	let each_value_3 = /*day*/ ctx[23].temp_svg.polygons;
             	validate_each_argument(each_value_3);
             	let each_blocks = [];
 
             	for (let i = 0; i < each_value_3.length; i += 1) {
             		each_blocks[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
             	}
-
-            	const block = {
-            		c: function create() {
-            			div = element("div");
-            			ul = element("ul");
-
-            			for (let i = 0; i < each_blocks.length; i += 1) {
-            				each_blocks[i].c();
-            			}
-
-            			attr_dev(ul, "class", "temperature_bar_chart");
-            			add_location(ul, file$1, 307, 16, 8095);
-            			attr_dev(div, "class", "rain_thing");
-            			add_location(div, file$1, 306, 14, 8054);
-            		},
-            		m: function mount(target, anchor) {
-            			insert_dev(target, div, anchor);
-            			append_dev(div, ul);
-
-            			for (let i = 0; i < each_blocks.length; i += 1) {
-            				if (each_blocks[i]) {
-            					each_blocks[i].m(ul, null);
-            				}
-            			}
-            		},
-            		p: function update(ctx, dirty) {
-            			if (dirty[0] & /*days, focussed_hour*/ 9) {
-            				each_value_3 = /*day*/ ctx[23].temp_bar_chart;
-            				validate_each_argument(each_value_3);
-            				let i;
-
-            				for (i = 0; i < each_value_3.length; i += 1) {
-            					const child_ctx = get_each_context_3(ctx, each_value_3, i);
-
-            					if (each_blocks[i]) {
-            						each_blocks[i].p(child_ctx, dirty);
-            					} else {
-            						each_blocks[i] = create_each_block_3(child_ctx);
-            						each_blocks[i].c();
-            						each_blocks[i].m(ul, null);
-            					}
-            				}
-
-            				for (; i < each_blocks.length; i += 1) {
-            					each_blocks[i].d(1);
-            				}
-
-            				each_blocks.length = each_value_3.length;
-            			}
-            		},
-            		d: function destroy(detaching) {
-            			if (detaching) detach_dev(div);
-            			destroy_each(each_blocks, detaching);
-            		}
-            	};
-
-            	dispatch_dev("SvelteRegisterBlock", {
-            		block,
-            		id: create_if_block_5.name,
-            		type: "if",
-            		source: "(306:12) {#if day.temp_bar_chart}",
-            		ctx
-            	});
-
-            	return block;
-            }
-
-            // (317:22) {#if temp.rt}
-            function create_if_block_6(ctx) {
-            	let span;
-            	let t_value = /*temp*/ ctx[29].rt + "";
-            	let t;
-
-            	const block = {
-            		c: function create() {
-            			span = element("span");
-            			t = text(t_value);
-            			attr_dev(span, "class", "record_temp");
-            			add_location(span, file$1, 317, 24, 8577);
-            		},
-            		m: function mount(target, anchor) {
-            			insert_dev(target, span, anchor);
-            			append_dev(span, t);
-            		},
-            		p: function update(ctx, dirty) {
-            			if (dirty[0] & /*days*/ 1 && t_value !== (t_value = /*temp*/ ctx[29].rt + "")) set_data_dev(t, t_value);
-            		},
-            		d: function destroy(detaching) {
-            			if (detaching) detach_dev(span);
-            		}
-            	};
-
-            	dispatch_dev("SvelteRegisterBlock", {
-            		block,
-            		id: create_if_block_6.name,
-            		type: "if",
-            		source: "(317:22) {#if temp.rt}",
-            		ctx
-            	});
-
-            	return block;
-            }
-
-            // (309:18) {#each day.temp_bar_chart as temp, t1}
-            function create_each_block_3(ctx) {
-            	let li;
-            	let t;
-            	let li_title_value;
-            	let if_block = /*temp*/ ctx[29].rt && create_if_block_6(ctx);
-
-            	const block = {
-            		c: function create() {
-            			li = element("li");
-            			if (if_block) if_block.c();
-            			t = space();
-            			attr_dev(li, "class", "temp");
-            			attr_dev(li, "title", li_title_value = `${/*temp*/ ctx[29].value}°`);
-            			toggle_class(li, "focussed", /*temp*/ ctx[29].hour === /*focussed_hour*/ ctx[3]);
-            			set_style(li, "height", `${/*temp*/ ctx[29].height}%`);
-            			add_location(li, file$1, 309, 20, 8207);
-            		},
-            		m: function mount(target, anchor) {
-            			insert_dev(target, li, anchor);
-            			if (if_block) if_block.m(li, null);
-            			append_dev(li, t);
-            		},
-            		p: function update(ctx, dirty) {
-            			if (/*temp*/ ctx[29].rt) {
-            				if (if_block) {
-            					if_block.p(ctx, dirty);
-            				} else {
-            					if_block = create_if_block_6(ctx);
-            					if_block.c();
-            					if_block.m(li, t);
-            				}
-            			} else if (if_block) {
-            				if_block.d(1);
-            				if_block = null;
-            			}
-
-            			if (dirty[0] & /*days*/ 1 && li_title_value !== (li_title_value = `${/*temp*/ ctx[29].value}°`)) {
-            				attr_dev(li, "title", li_title_value);
-            			}
-
-            			if (dirty[0] & /*days, focussed_hour*/ 9) {
-            				toggle_class(li, "focussed", /*temp*/ ctx[29].hour === /*focussed_hour*/ ctx[3]);
-            			}
-
-            			if (dirty[0] & /*days*/ 1) {
-            				set_style(li, "height", `${/*temp*/ ctx[29].height}%`);
-            			}
-            		},
-            		d: function destroy(detaching) {
-            			if (detaching) detach_dev(li);
-            			if (if_block) if_block.d();
-            		}
-            	};
-
-            	dispatch_dev("SvelteRegisterBlock", {
-            		block,
-            		id: create_each_block_3.name,
-            		type: "each",
-            		source: "(309:18) {#each day.temp_bar_chart as temp, t1}",
-            		ctx
-            	});
-
-            	return block;
-            }
-
-            // (326:12) {#if day.temp_svg}
-            function create_if_block_4(ctx) {
-            	let div;
-            	let svg;
-            	let polyline;
-            	let polyline_points_value;
-            	let mounted;
-            	let dispose;
 
             	function mousemove_handler(...args) {
             		return /*mousemove_handler*/ ctx[7](/*day*/ ctx[23], ...args);
@@ -1857,22 +1508,54 @@ System.register('app', [], function (exports) {
             		c: function create() {
             			div = element("div");
             			svg = svg_element("svg");
+            			linearGradient = svg_element("linearGradient");
+            			stop0 = svg_element("stop");
+            			stop1 = svg_element("stop");
             			polyline = svg_element("polyline");
-            			attr_dev(polyline, "points", polyline_points_value = /*day*/ ctx[23].temp_svg);
-            			add_location(polyline, file$1, 336, 18, 9204);
+
+            			for (let i = 0; i < each_blocks.length; i += 1) {
+            				each_blocks[i].c();
+            			}
+
+            			attr_dev(stop0, "class", "stop1");
+            			attr_dev(stop0, "stop-color", "#ddbf48");
+            			attr_dev(stop0, "offset", "0%");
+            			add_location(stop0, file$1, 361, 20, 9876);
+            			attr_dev(stop1, "class", "stop3");
+            			attr_dev(stop1, "stop-color", "#ddbf48");
+            			attr_dev(stop1, "stop-opacity", "0.1");
+            			attr_dev(stop1, "offset", "100%");
+            			add_location(stop1, file$1, 362, 20, 9952);
+            			attr_dev(linearGradient, "id", "Gradient1");
+            			attr_dev(linearGradient, "x1", "0");
+            			attr_dev(linearGradient, "x2", "0");
+            			attr_dev(linearGradient, "y1", "0");
+            			attr_dev(linearGradient, "y2", "1");
+            			add_location(linearGradient, file$1, 360, 18, 9796);
+            			attr_dev(polyline, "points", polyline_points_value = /*day*/ ctx[23].temp_svg.polyline);
+            			add_location(polyline, file$1, 369, 18, 10191);
             			attr_dev(svg, "class", "sun_line_chart");
-            			attr_dev(svg, "height", "30");
+            			attr_dev(svg, "height", svg_height);
             			attr_dev(svg, "width", "100");
-            			attr_dev(svg, "viewBox", "0 0 100 30");
+            			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 100 " + svg_height);
             			attr_dev(svg, "preserveAspectRatio", "none");
-            			add_location(svg, file$1, 327, 16, 8848);
+            			add_location(svg, file$1, 351, 16, 9422);
             			attr_dev(div, "class", "rain_thing");
-            			add_location(div, file$1, 326, 14, 8807);
+            			add_location(div, file$1, 350, 14, 9381);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
             			append_dev(div, svg);
+            			append_dev(svg, linearGradient);
+            			append_dev(linearGradient, stop0);
+            			append_dev(linearGradient, stop1);
             			append_dev(svg, polyline);
+
+            			for (let i = 0; i < each_blocks.length; i += 1) {
+            				if (each_blocks[i]) {
+            					each_blocks[i].m(svg, null);
+            				}
+            			}
 
             			if (!mounted) {
             				dispose = [
@@ -1886,12 +1569,37 @@ System.register('app', [], function (exports) {
             		p: function update(new_ctx, dirty) {
             			ctx = new_ctx;
 
-            			if (dirty[0] & /*days*/ 1 && polyline_points_value !== (polyline_points_value = /*day*/ ctx[23].temp_svg)) {
+            			if (dirty[0] & /*days*/ 1 && polyline_points_value !== (polyline_points_value = /*day*/ ctx[23].temp_svg.polyline)) {
             				attr_dev(polyline, "points", polyline_points_value);
+            			}
+
+            			if (dirty[0] & /*days, focussed_hour*/ 9) {
+            				each_value_3 = /*day*/ ctx[23].temp_svg.polygons;
+            				validate_each_argument(each_value_3);
+            				let i;
+
+            				for (i = 0; i < each_value_3.length; i += 1) {
+            					const child_ctx = get_each_context_3(ctx, each_value_3, i);
+
+            					if (each_blocks[i]) {
+            						each_blocks[i].p(child_ctx, dirty);
+            					} else {
+            						each_blocks[i] = create_each_block_3(child_ctx);
+            						each_blocks[i].c();
+            						each_blocks[i].m(svg, null);
+            					}
+            				}
+
+            				for (; i < each_blocks.length; i += 1) {
+            					each_blocks[i].d(1);
+            				}
+
+            				each_blocks.length = each_value_3.length;
             			}
             		},
             		d: function destroy(detaching) {
             			if (detaching) detach_dev(div);
+            			destroy_each(each_blocks, detaching);
             			mounted = false;
             			run_all(dispose);
             		}
@@ -1901,14 +1609,54 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block_4.name,
             		type: "if",
-            		source: "(326:12) {#if day.temp_svg}",
+            		source: "(350:12) {#if day.temp_svg}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (357:12) {:else}
+            // (371:18) {#each day.temp_svg.polygons as polygon}
+            function create_each_block_3(ctx) {
+            	let polygon;
+            	let polygon_points_value;
+
+            	const block = {
+            		c: function create() {
+            			polygon = svg_element("polygon");
+            			attr_dev(polygon, "points", polygon_points_value = /*polygon*/ ctx[29].points);
+            			toggle_class(polygon, "focussed", /*polygon*/ ctx[29].hour === /*focussed_hour*/ ctx[3]);
+            			add_location(polygon, file$1, 371, 20, 10314);
+            		},
+            		m: function mount(target, anchor) {
+            			insert_dev(target, polygon, anchor);
+            		},
+            		p: function update(ctx, dirty) {
+            			if (dirty[0] & /*days*/ 1 && polygon_points_value !== (polygon_points_value = /*polygon*/ ctx[29].points)) {
+            				attr_dev(polygon, "points", polygon_points_value);
+            			}
+
+            			if (dirty[0] & /*days, focussed_hour*/ 9) {
+            				toggle_class(polygon, "focussed", /*polygon*/ ctx[29].hour === /*focussed_hour*/ ctx[3]);
+            			}
+            		},
+            		d: function destroy(detaching) {
+            			if (detaching) detach_dev(polygon);
+            		}
+            	};
+
+            	dispatch_dev("SvelteRegisterBlock", {
+            		block,
+            		id: create_each_block_3.name,
+            		type: "each",
+            		source: "(371:18) {#each day.temp_svg.polygons as polygon}",
+            		ctx
+            	});
+
+            	return block;
+            }
+
+            // (396:12) {:else}
             function create_else_block$1(ctx) {
             	let div1;
             	let div0;
@@ -1920,10 +1668,10 @@ System.register('app', [], function (exports) {
             			div0 = element("div");
             			attr_dev(div0, "class", "rain_inner");
             			set_style(div0, "width", `${/*day*/ ctx[23].pop * 100}%`);
-            			add_location(div0, file$1, 361, 16, 10059);
+            			add_location(div0, file$1, 400, 16, 11308);
             			attr_dev(div1, "class", "rain_thing rain_probability");
             			attr_dev(div1, "title", div1_title_value = `${/*day*/ ctx[23].pop * 100}%`);
-            			add_location(div1, file$1, 357, 14, 9926);
+            			add_location(div1, file$1, 396, 14, 11175);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div1, anchor);
@@ -1947,14 +1695,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_else_block$1.name,
             		type: "else",
-            		source: "(357:12) {:else}",
+            		source: "(396:12) {:else}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (342:12) {#if day.hours.length > 4}
+            // (381:12) {#if day.hours.length > 4}
             function create_if_block_2$1(ctx) {
             	let div;
             	let ul;
@@ -1976,9 +1724,9 @@ System.register('app', [], function (exports) {
             			}
 
             			attr_dev(ul, "class", "rain_chance_graph");
-            			add_location(ul, file$1, 343, 16, 9396);
+            			add_location(ul, file$1, 382, 16, 10645);
             			attr_dev(div, "class", "rain_thing");
-            			add_location(div, file$1, 342, 14, 9355);
+            			add_location(div, file$1, 381, 14, 10604);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -2025,14 +1773,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block_2$1.name,
             		type: "if",
-            		source: "(342:12) {#if day.hours.length > 4}",
+            		source: "(381:12) {#if day.hours.length > 4}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (350:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}
+            // (389:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}
             function create_if_block_3(ctx) {
             	let span;
             	let t_value = constants.timeToHour(/*hour*/ ctx[26].dt) + "";
@@ -2042,7 +1790,7 @@ System.register('app', [], function (exports) {
             		c: function create() {
             			span = element("span");
             			t = text(t_value);
-            			add_location(span, file$1, 350, 24, 9724);
+            			add_location(span, file$1, 389, 24, 10973);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, span, anchor);
@@ -2060,14 +1808,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_if_block_3.name,
             		type: "if",
-            		source: "(350:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}",
+            		source: "(389:22) {#if h1 % Math.ceil(day.hours.length / 4) == 0}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (345:18) {#each day.hours as hour, h1}
+            // (384:18) {#each day.hours as hour, h1}
             function create_each_block_2(ctx) {
             	let li;
             	let show_if = /*h1*/ ctx[28] % Math.ceil(/*day*/ ctx[23].hours.length / 4) == 0;
@@ -2082,7 +1830,7 @@ System.register('app', [], function (exports) {
             			t = space();
             			attr_dev(li, "title", li_title_value = `${/*hour*/ ctx[26].pop * 100}%`);
             			set_style(li, "height", `${/*hour*/ ctx[26].pop * 100}%`);
-            			add_location(li, file$1, 345, 20, 9495);
+            			add_location(li, file$1, 384, 20, 10744);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, li, anchor);
@@ -2123,14 +1871,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_each_block_2.name,
             		type: "each",
-            		source: "(345:18) {#each day.hours as hour, h1}",
+            		source: "(384:18) {#each day.hours as hour, h1}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (283:6) {#each days as day, di}
+            // (308:6) {#each days as day, di}
             function create_each_block_1(ctx) {
             	let if_block_anchor;
             	let current;
@@ -2168,14 +1916,14 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_each_block_1.name,
             		type: "each",
-            		source: "(283:6) {#each days as day, di}",
+            		source: "(308:6) {#each days as day, di}",
             		ctx
             	});
 
             	return block;
             }
 
-            // (373:8) {#each constants.available_locations as loc}
+            // (412:8) {#each constants.available_locations as loc}
             function create_each_block(ctx) {
             	let a;
             	let t_value = /*loc*/ ctx[20] + "";
@@ -2194,7 +1942,7 @@ System.register('app', [], function (exports) {
             			attr_dev(a, "href", "#location");
             			attr_dev(a, "class", "button");
             			toggle_class(a, "primary", /*loc*/ ctx[20] == /*location*/ ctx[1].name);
-            			add_location(a, file$1, 373, 10, 10365);
+            			add_location(a, file$1, 412, 10, 11614);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, a, anchor);
@@ -2223,7 +1971,7 @@ System.register('app', [], function (exports) {
             		block,
             		id: create_each_block.name,
             		type: "each",
-            		source: "(373:8) {#each constants.available_locations as loc}",
+            		source: "(412:8) {#each constants.available_locations as loc}",
             		ctx
             	});
 
@@ -2255,7 +2003,7 @@ System.register('app', [], function (exports) {
             			div = element("div");
             			if_block.c();
             			toggle_class(div, "animated", constants.ANIMATED_ICONS);
-            			add_location(div, file$1, 279, 0, 7058);
+            			add_location(div, file$1, 304, 0, 7703);
             		},
             		l: function claim(nodes) {
             			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2326,6 +2074,8 @@ System.register('app', [], function (exports) {
 
             	return block;
             }
+
+            const svg_height = 70;
 
             function getLastLocation() {
             	const l = localStorage.getItem(`weather_last_location`);
@@ -2418,8 +2168,7 @@ System.register('app', [], function (exports) {
             			day.hours = hours;
 
             			// day.temp_line_chart = tempLineChart(hours);
-            			day.temp_bar_chart = tempBarChart(hours);
-
+            			// day.temp_bar_chart = tempBarChart(hours);
             			day.temp_svg = tempSVGChart(hours);
 
             			if (di == 0) {
@@ -2431,18 +2180,38 @@ System.register('app', [], function (exports) {
             	}
 
             	function tempSVGChart(hours) {
-            		let txy = [];
+            		let pl = [];
             		let temps = hours.map(h => h.temp);
+            		let lastx, lasty;
+            		let polygons = [];
 
             		temps.forEach((temp, i) => {
             			if (temp) {
-            				const x = (i + 0.5) / temps.length * 100;
-            				const y = constants.map(temp, constants.MIN_TEMP, constants.MAX_TEMP, 30, 0);
-            				txy.push(`${x}, ${y}`);
+            				const x = Math.round(constants.map(i + 1, 0, temps.length, 0, 100));
+            				const y = Math.round(constants.map(temp, constants.MIN_TEMP, constants.MAX_TEMP, svg_height, 0) * 10) / 10;
+
+            				if (!lastx) {
+            					lastx = Math.round(constants.map(i, 0, temps.length, 0, 100));
+            					lasty = y;
+            					pl.push(`${lastx}, ${y}`);
+            				}
+
+            				pl.push(`${x}, ${y}`);
+
+            				if (lasty) {
+            					polygons.push({
+            						points: `${lastx}, ${lasty},${x}, ${y},${x}, ${svg_height},${lastx}, ${svg_height} `,
+            						hour: hours[i]
+            					});
+            				}
+
+            				lastx = x;
+            				lasty = y;
             			}
             		});
 
-            		return txy.join(",");
+            		const polyline = pl.join(",");
+            		return { polyline, polygons };
             	}
 
             	function tempBarChart(hours) {
@@ -2618,6 +2387,7 @@ System.register('app', [], function (exports) {
             		focussed_day,
             		focussed_hour,
             		click_player,
+            		svg_height,
             		chooseLocation,
             		getWeatherData,
             		processData,

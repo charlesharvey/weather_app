@@ -11,6 +11,7 @@
   let focussed_day;
   let focussed_hour;
   let click_player;
+  const svg_height = 70;
   // rio woolwich svalbard bangkok
 
   onMount(() => {
@@ -84,7 +85,7 @@
       day.hours = hours;
 
       // day.temp_line_chart = tempLineChart(hours);
-      day.temp_bar_chart = tempBarChart(hours);
+      // day.temp_bar_chart = tempBarChart(hours);
       day.temp_svg = tempSVGChart(hours);
 
       if (di == 0) {
@@ -96,22 +97,46 @@
   }
 
   function tempSVGChart(hours) {
-    let txy = [];
+    let pl = [];
     let temps = hours.map((h) => h.temp);
+    let lastx, lasty;
+    let polygons = [];
     temps.forEach((temp, i) => {
       if (temp) {
-        const x = ((i + 0.5) / temps.length) * 100;
-        const y = constants.map(
-          temp,
-          constants.MIN_TEMP,
-          constants.MAX_TEMP,
-          30,
-          0
-        );
-        txy.push(`${x}, ${y}`);
+        const x = Math.round(constants.map(i + 1, 0, temps.length, 0, 100));
+        const y =
+          Math.round(
+            constants.map(
+              temp,
+              constants.MIN_TEMP,
+              constants.MAX_TEMP,
+              svg_height,
+              0
+            ) * 10
+          ) / 10;
+
+        if (!lastx) {
+          lastx = Math.round(constants.map(i, 0, temps.length, 0, 100));
+          lasty = y;
+          pl.push(`${lastx}, ${y}`);
+        }
+        pl.push(`${x}, ${y}`);
+        if (lasty) {
+          polygons.push({
+            points: `${lastx}, ${lasty},${x}, ${y},${x}, ${svg_height},${lastx}, ${svg_height} `,
+            hour: hours[i],
+          });
+        }
+        lastx = x;
+        lasty = y;
       }
     });
-    return txy.join(",");
+    const polyline = pl.join(",");
+
+    return {
+      polyline,
+      polygons,
+    };
   }
 
   function tempBarChart(hours) {
@@ -288,7 +313,7 @@
             {:else}
               <WeatherInfo period={day} />
             {/if}
-            {#if day.temp_line_chart}
+            <!-- {#if day.temp_line_chart}
               <div class="temperature_line_graph">
                 {#each day.temp_line_chart as temp, t1}
                   <div
@@ -313,7 +338,6 @@
                       class:focussed={temp.hour === focussed_hour}
                       style:height={`${temp.height}%`}
                     >
-                      <!-- on:mouseover={() => focusOnHour(day, temp.hour)} -->
                       {#if temp.rt}
                         <span class="record_temp">{temp.rt}</span>
                       {/if}
@@ -321,7 +345,7 @@
                   {/each}
                 </ul>
               </div>
-            {/if}
+            {/if} -->
 
             {#if day.temp_svg}
               <div class="rain_thing">
@@ -329,12 +353,27 @@
                   on:mousemove={(e) => focusOnHourByPos(e, day)}
                   on:touchmove={(e) => focusOnHourByPos(e, day)}
                   class="sun_line_chart"
-                  height="30"
+                  height={svg_height}
                   width="100"
-                  viewBox="0 0 100 30"
+                  viewBox="0 0 100 {svg_height}"
                   preserveAspectRatio="none"
                 >
-                  <polyline points={day.temp_svg} />
+                  <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
+                    <stop class="stop1" stop-color="#ddbf48" offset="0%" />
+                    <stop
+                      class="stop3"
+                      stop-color="#ddbf48"
+                      stop-opacity="0.1"
+                      offset="100%"
+                    />
+                  </linearGradient>
+                  <polyline points={day.temp_svg.polyline} />
+                  {#each day.temp_svg.polygons as polygon}
+                    <polygon
+                      points={polygon.points}
+                      class:focussed={polygon.hour === focussed_hour}
+                    />
+                  {/each}
                 </svg>
               </div>
             {/if}
