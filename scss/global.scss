@@ -104,7 +104,6 @@ section#seven_days {
 
 
 
-
         h3 {
             font-size: 2.3em;
             text-transform: uppercase;
@@ -296,6 +295,12 @@ section#seven_days {
             opacity: 0.7;
         }
     }
+
+    text {
+        fill: $cloud_color;
+        stroke: none;
+        font-size: 5px;
+    }
 }
 
 
@@ -394,10 +399,16 @@ section#seven_days {
 
     &.icon_01d,
     &.icon_01n {
-
         //sunny
         background-image: url('../images/weathers/sunny.svg');
     }
+
+
+    &.icon_01n {
+        background-image: url('../images/weathers/night.svg');
+
+    }
+
 
     &.icon_10d,
     &.icon_10n {
@@ -418,6 +429,8 @@ section#seven_days {
     &.icon_04d {
         //cloudy
         background-image: url('../images/weathers/cloudy.svg');
+
+
 
     }
 

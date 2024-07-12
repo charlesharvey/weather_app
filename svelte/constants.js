@@ -1,20 +1,23 @@
 export default {
   api_key: api_key,
-  woolwich: { name: "woolwich", lat: 51.491, lng: 0.0588 },
-  london: { name: "london", lat: 51.513, lng: -0.103 },
-  rio: { name: "rio", lat: -22.9137907, lng: -43.7756334 },
-  svalbard: { name: "svalbard", lat: 78.6196353, lng: 16.8016345 },
-  bangkok: { name: "bangkok", lat: 13.7539475, lng: 100.5431602 },
-  malltraeth: { name: "malltraeth", lat: 53.1919, lng: -4.3941 },
-  hayonwye: { name: "hayonwye", lat: 52.0738, lng: -3.1399 },
-  portmeirion: { name: "portmeirion", lat: 52.9136, lng: -4.1167 },
-  cork: { name: "cork", lat: 51.9, lng: -8.48 },
+  locations: {
+    woolwich: { name: "woolwich", lat: 51.491, lng: 0.0588 },
+    london: { name: "london", lat: 51.513, lng: -0.103 },
+    rio: { name: "rio", lat: -22.9137, lng: -43.7756 },
+    svalbard: { name: "svalbard", lat: 78.6196, lng: 16.8016 },
+    bangkok: { name: "bangkok", lat: 13.7539, lng: 100.5431 },
+    malltraeth: { name: "malltraeth", lat: 53.1919, lng: -4.3941 },
+    hayonwye: { name: "hayonwye", lat: 52.0738, lng: -3.1399 },
+    portmeirion: { name: "portmeirion", lat: 52.9136, lng: -4.1167 },
+    cork: { name: "cork", lat: 51.9, lng: -8.48 },
+    izmir: { name: "izmir", lat: 38.47, lng: 27.114 },
+  },
+  available_locations: ["woolwich", "malltraeth"],
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
   USE_CACHE: true,
   MAX_TEMP: 45,
   MIN_TEMP: -10,
-  available_locations: ["woolwich", "malltraeth"],
   click_file: "audio/tick.mp3",
   roundTemp: (a) => {
     return Math.round(a);
@@ -27,7 +30,6 @@ export default {
   roundSpeed: (a) => {
     return Math.round(a);
   },
-
   timeToHour: (t) => {
     if (t > 0) {
       const date = new Date(t * 1000);

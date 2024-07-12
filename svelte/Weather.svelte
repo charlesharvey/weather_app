@@ -19,7 +19,7 @@
   });
 
   function chooseLocation(loc) {
-    location = constants[loc];
+    location = constants.locations[loc];
     localStorage.setItem(`weather_last_location`, loc);
     getWeatherData();
   }
@@ -82,7 +82,14 @@
   }
 
   function tempSVGChart(hours) {
+    const alltemps = hours.filter((h) => h.temp !== false).map((h) => h.temp);
+    const maxtemp = Math.max(...alltemps);
+    const lowtemp = Math.min(...alltemps);
+    let maxtaken = false;
+    let mintaken = false;
+
     let pl = [];
+    let texts = [];
     let temps = hours.map((h) => h.temp);
     let lastx, lasty;
     let polygons = [];
@@ -114,6 +121,22 @@
         }
         lastx = x;
         lasty = y;
+
+        if (temp === maxtemp && !maxtaken) {
+          maxtaken = true;
+          texts.push({
+            text: `${constants.roundTemp(temp)}°`,
+            x: lastx,
+            y: y - 6,
+          });
+        } else if (temp === lowtemp && !mintaken) {
+          mintaken = true;
+          texts.push({
+            text: `${constants.roundTemp(temp)}°`,
+            x: lastx,
+            y: y - 6,
+          });
+        }
       }
     });
     const polyline = pl.join(",");
@@ -121,6 +144,7 @@
     return {
       polyline,
       polygons,
+      texts,
     };
   }
 
@@ -247,7 +271,7 @@
   function focusOnHour(day, hour) {
     focussed_hour = hour;
     focussed_day = day;
-    //  playClick();
+    // playClick();
   }
 
   function playClick() {
@@ -313,6 +337,7 @@
                 {/each}
               </div>
             {/if}
+            -->
             {#if day.temp_bar_chart}
               <div class="rain_thing">
                 <ul class="temperature_bar_chart">
@@ -330,7 +355,7 @@
                   {/each}
                 </ul>
               </div>
-            {/if} -->
+            {/if}
 
             {#if day.temp_svg}
               <div class="rain_thing">
@@ -350,6 +375,9 @@
                       class:focussed={polygon.hour === focussed_hour}
                     />
                   {/each}
+                  <!-- {#each day.temp_svg.texts as text}
+                    <text x={text.x} y={text.y}>{text.text}</text>
+                  {/each} -->
                 </svg>
               </div>
             {/if}
@@ -406,3 +434,9 @@
     </linearGradient>
   </svg>
 </div>
+
+<style>
+  svg {
+    background-color: red;
+  }
+</style>
