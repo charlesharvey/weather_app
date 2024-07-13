@@ -4,7 +4,7 @@
 include('env.php');
 
 function wf_version() {
-    return '0.0.7';
+    return '0.0.8';
 }
 
 

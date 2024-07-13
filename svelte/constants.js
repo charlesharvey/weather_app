@@ -18,6 +18,7 @@ export default {
   USE_CACHE: true,
   MAX_TEMP: 45,
   MIN_TEMP: -10,
+  TIME_TO_UNFOCUS_HOUR: 5000,
   click_file: "audio/tick.mp3",
   roundTemp: (a) => {
     return Math.round(a);

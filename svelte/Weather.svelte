@@ -11,6 +11,7 @@
   let focussed_day;
   let focussed_hour;
   let click_player;
+  let day_timer;
   const svg_height = 70;
 
   onMount(() => {
@@ -268,10 +269,24 @@
     }
   }
 
+  function unFocusHour() {
+    if (focussed_day) {
+      clearTimeout(day_timer);
+      day_timer = setTimeout(() => {
+        unFocusHourNow();
+      }, constants.TIME_TO_UNFOCUS_HOUR);
+    }
+  }
+
+  function unFocusHourNow() {
+    focusOnHour(focussed_day, null);
+  }
+
   function focusOnHour(day, hour) {
     focussed_hour = hour;
     focussed_day = day;
     // playClick();
+    unFocusHour();
   }
 
   function playClick() {
@@ -360,6 +375,7 @@
             {#if day.temp_svg}
               <div class="rain_thing">
                 <svg
+                  on:mouseleave={(e) => unFocusHourNow()}
                   on:mousemove={(e) => focusOnHourByPos(e, day)}
                   on:touchmove={(e) => focusOnHourByPos(e, day)}
                   class="sun_line_chart"
@@ -434,9 +450,3 @@
     </linearGradient>
   </svg>
 </div>
-
-<style>
-  svg {
-    background-color: red;
-  }
-</style>

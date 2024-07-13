@@ -43,8 +43,16 @@ section#seven_days {
         margin: 0 0 30px;
         min-width: 250px;
 
+
+        padding: 20px 20px 70px;
+
+        background-color: white;
+        border-top: 5px solid $brand_color;
+
+        box-shadow: $box_shadow;
+
         @media(min-width: $mobile_width) {
-            min-width: 180px;
+            min-width: 170px;
             min-height: 320px;
             margin: 0;
 
@@ -56,12 +64,6 @@ section#seven_days {
 
 
 
-        padding: 20px 30px 70px;
-
-        background-color: white;
-        border-top: 5px solid $brand_color;
-
-        box-shadow: $box_shadow;
 
         &.weather_01d {
             border-color: $sun_color;

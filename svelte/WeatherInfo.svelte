@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
 
   import constants from "./constants";
-  import { svg_element } from "svelte/internal";
   export let period;
 
   onMount(() => {});
