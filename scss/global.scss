@@ -40,8 +40,9 @@ section#seven_days {
         // transition: all 0.3s;
         min-height: 400px;
 
-        margin: 0 0 30px;
-        min-width: 250px;
+        margin: 0 0 10px;
+        min-width: 190px;
+        max-width: 300px;
 
 
         padding: 20px 20px 70px;
@@ -55,10 +56,24 @@ section#seven_days {
             min-width: 170px;
             min-height: 320px;
             margin: 0;
+            max-width: none;
+
 
             &:hover {
                 // flex: 2;
             }
+        }
+
+
+        @media(min-width: $tablet_width) {
+
+            max-width: 20vw;
+
+        }
+
+        @media(min-width: $computer_width) {
+            min-width: 170px;
+            max-width: 12vw;
         }
 
 
