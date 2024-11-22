@@ -23,6 +23,26 @@ main {
 }
 
 
+#seven_days_outer {
+    @media(min-width: $computer_width) {
+
+        padding: 20px 10px;
+        overflow: hidden;
+        position: relative;
+
+        &:after {
+            content: '';
+            background: linear-gradient(90deg, transparentize($background_color, 1), $background_color);
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 50px;
+        }
+    }
+}
+
+
 section#seven_days {
 
     display: flex;
@@ -32,6 +52,11 @@ section#seven_days {
     align-items: center;
 
     @media(min-width: $mobile_width) {}
+
+    @media(min-width: $computer_width) {
+        display: block;
+        width: 2500px;
+    }
 
     .day {
         text-align: center;
@@ -72,8 +97,14 @@ section#seven_days {
         }
 
         @media(min-width: $computer_width) {
-            min-width: 170px;
-            max-width: 12vw;
+            // min-width: 170px;
+            // max-width: 12vw;
+
+            width: 200px;
+            display: inline-block;
+            max-width: auto;
+            min-width: auto;
+            margin: 0 20px 0 0;
         }
 
 

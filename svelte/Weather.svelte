@@ -328,16 +328,17 @@
 
 <div class:animated={constants.ANIMATED_ICONS}>
   {#if days}
-    <section id="seven_days">
-      {#each days as day, di}
-        {#if di < 7}
-          <div class="day weather_{day.weather[0].icon}">
-            {#if focussed_hour && focussed_day == day}
-              <WeatherInfo period={focussed_hour} />
-            {:else}
-              <WeatherInfo period={day} />
-            {/if}
-            <!-- {#if day.temp_line_chart}
+    <div id="seven_days_outer">
+      <section id="seven_days">
+        {#each days as day, di}
+          {#if di < 7}
+            <div class="day weather_{day.weather[0].icon}">
+              {#if focussed_hour && focussed_day == day}
+                <WeatherInfo period={focussed_hour} />
+              {:else}
+                <WeatherInfo period={day} />
+              {/if}
+              <!-- {#if day.temp_line_chart}
               <div class="temperature_line_graph">
                 {#each day.temp_line_chart as temp, t1}
                   <div
@@ -353,79 +354,83 @@
               </div>
             {/if}
             -->
-            {#if day.temp_bar_chart}
-              <div class="rain_thing">
-                <ul class="temperature_bar_chart">
-                  {#each day.temp_bar_chart as temp, t1}
-                    <li
-                      class="temp"
-                      title={`${temp.value}°`}
-                      class:focussed={temp.hour === focussed_hour}
-                      style:height={`${temp.height}%`}
-                    >
-                      {#if temp.rt}
-                        <span class="record_temp">{temp.rt}</span>
-                      {/if}
-                    </li>
-                  {/each}
-                </ul>
-              </div>
-            {/if}
+              {#if day.temp_bar_chart}
+                <div class="rain_thing">
+                  <ul class="temperature_bar_chart">
+                    {#each day.temp_bar_chart as temp, t1}
+                      <li
+                        class="temp"
+                        title={`${temp.value}°`}
+                        class:focussed={temp.hour === focussed_hour}
+                        style:height={`${temp.height}%`}
+                      >
+                        {#if temp.rt}
+                          <span class="record_temp">{temp.rt}</span>
+                        {/if}
+                      </li>
+                    {/each}
+                  </ul>
+                </div>
+              {/if}
 
-            {#if day.temp_svg}
-              <div class="rain_thing">
-                <svg
-                  on:mouseleave={(e) => unFocusHourNow()}
-                  on:mousemove={(e) => focusOnHourByPos(e, day)}
-                  on:touchmove={(e) => focusOnHourByPos(e, day)}
-                  class="sun_line_chart"
-                  height={svg_height}
-                  width="100"
-                  viewBox="0 0 100 {svg_height}"
-                  preserveAspectRatio="none"
-                >
-                  <polyline points={day.temp_svg.polyline} />
-                  {#each day.temp_svg.polygons as polygon}
-                    <polygon
-                      points={polygon.points}
-                      class:focussed={polygon.hour === focussed_hour}
-                    />
-                  {/each}
-                  <!-- {#each day.temp_svg.texts as text}
+              {#if day.temp_svg}
+                <div class="rain_thing">
+                  <svg
+                    on:mouseleave={(e) => unFocusHourNow()}
+                    on:mousemove={(e) => focusOnHourByPos(e, day)}
+                    on:touchmove={(e) => focusOnHourByPos(e, day)}
+                    class="sun_line_chart"
+                    height={svg_height}
+                    width="100"
+                    viewBox="0 0 100 {svg_height}"
+                    preserveAspectRatio="none"
+                  >
+                    <polyline points={day.temp_svg.polyline} />
+                    {#each day.temp_svg.polygons as polygon}
+                      <polygon
+                        points={polygon.points}
+                        class:focussed={polygon.hour === focussed_hour}
+                      />
+                    {/each}
+                    <!-- {#each day.temp_svg.texts as text}
                     <text x={text.x} y={text.y}>{text.text}</text>
                   {/each} -->
-                </svg>
-              </div>
-            {/if}
+                  </svg>
+                </div>
+              {/if}
 
-            {#if day.hours.length > 4}
-              <div class="rain_thing">
-                <ul class="rain_chance_graph">
-                  {#each day.hours as hour, h1}
-                    <li
-                      title={`${hour.pop * 100}%`}
-                      style:height={`${hour.pop * 100}%`}
-                    >
-                      {#if h1 % Math.ceil(day.hours.length / 4) == 0}
-                        <span>{constants.timeToHour(hour.dt)}</span>
-                      {/if}
-                    </li>
-                  {/each}
-                </ul>
-              </div>
-            {:else}
-              <div
-                class="rain_thing rain_probability"
-                title={`${day.pop * 100}%`}
-              >
-                <div class="rain_inner" style:width={`${day.pop * 100}%`}></div>
-              </div>
-            {/if}
-          </div>
-          <!-- end of .day -->
-        {/if}
-      {/each}
-    </section>
+              {#if day.hours.length > 4}
+                <div class="rain_thing">
+                  <ul class="rain_chance_graph">
+                    {#each day.hours as hour, h1}
+                      <li
+                        title={`${hour.pop * 100}%`}
+                        style:height={`${hour.pop * 100}%`}
+                      >
+                        {#if h1 % Math.ceil(day.hours.length / 4) == 0}
+                          <span>{constants.timeToHour(hour.dt)}</span>
+                        {/if}
+                      </li>
+                    {/each}
+                  </ul>
+                </div>
+              {:else}
+                <div
+                  class="rain_thing rain_probability"
+                  title={`${day.pop * 100}%`}
+                >
+                  <div
+                    class="rain_inner"
+                    style:width={`${day.pop * 100}%`}
+                  ></div>
+                </div>
+              {/if}
+            </div>
+            <!-- end of .day -->
+          {/if}
+        {/each}
+      </section>
+    </div>
 
     <section>
       <div class="button_group">
