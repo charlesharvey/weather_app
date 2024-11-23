@@ -11,8 +11,9 @@ export default {
     portmeirion: { name: "portmeirion", lat: 52.9136, lng: -4.1167 },
     cork: { name: "cork", lat: 51.9, lng: -8.48 },
     izmir: { name: "izmir", lat: 38.47, lng: 27.114 },
+    tisbury: { name: "tisbury", lat: 51.0627, lng: -2.118 },
   },
-  available_locations: ["woolwich", "malltraeth"],
+  available_locations: ["woolwich", "malltraeth", "tisbury"],
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
   USE_CACHE: true,
@@ -27,6 +28,10 @@ export default {
     let scale = speed / 10;
     scale = Math.min(Math.max(scale, 0.5), 1.2);
     return ` rotate(${deg}deg) scale(${scale})`;
+  },
+  windToMPH: (sp) => {
+    // m/s to mph
+    return Math.round(sp * 2.236936);
   },
   roundSpeed: (a) => {
     return Math.round(a);

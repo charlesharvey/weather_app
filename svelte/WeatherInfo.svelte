@@ -43,14 +43,15 @@
       {period.weather[0].main}
       <span class="wind_speed">
         <span
+          title="mph"
           style:transform={constants.windSpeedAndDirection(
             period.wind_speed,
             period.wind_deg
           )}
           class="icon icon_wind"
         ></span>
-        {constants.roundSpeed(period.wind_speed)}<span class="wind_units"
-          >kmh</span
+        {constants.windToMPH(period.wind_speed)}<span class="wind_units"
+          >mph</span
         >
       </span>
     </div>

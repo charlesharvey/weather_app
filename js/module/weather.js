@@ -488,8 +488,9 @@ var constants = {
     portmeirion: { name: "portmeirion", lat: 52.9136, lng: -4.1167 },
     cork: { name: "cork", lat: 51.9, lng: -8.48 },
     izmir: { name: "izmir", lat: 38.47, lng: 27.114 },
+    tisbury: { name: "tisbury", lat: 51.0627, lng: -2.118 },
   },
-  available_locations: ["woolwich", "malltraeth"],
+  available_locations: ["woolwich", "malltraeth", "tisbury"],
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
   USE_CACHE: true,
@@ -504,6 +505,10 @@ var constants = {
     let scale = speed / 10;
     scale = Math.min(Math.max(scale, 0.5), 1.2);
     return ` rotate(${deg}deg) scale(${scale})`;
+  },
+  windToMPH: (sp) => {
+    // m/s to mph
+    return Math.round(sp * 2.236936);
   },
   roundSpeed: (a) => {
     return Math.round(a);
@@ -583,7 +588,7 @@ function create_if_block(ctx) {
 	let span4;
 	let span2;
 	let t9;
-	let t10_value = constants.roundSpeed(/*period*/ ctx[0].wind_speed) + "";
+	let t10_value = constants.windToMPH(/*period*/ ctx[0].wind_speed) + "";
 	let t10;
 	let span3;
 	let if_block0 = /*period*/ ctx[0].time && create_if_block_2(ctx);
@@ -620,7 +625,7 @@ function create_if_block(ctx) {
 			t9 = space();
 			t10 = text(t10_value);
 			span3 = element("span");
-			span3.textContent = "kmh";
+			span3.textContent = "mph";
 			attr_dev(span0, "class", "dayOfWeek");
 			add_location(span0, file, 12, 6, 183);
 			attr_dev(span1, "class", "date");
@@ -630,11 +635,12 @@ function create_if_block(ctx) {
 			add_location(div0, file, 20, 4, 428);
 			attr_dev(div1, "class", "temperatures");
 			add_location(div1, file, 21, 4, 487);
+			attr_dev(span2, "title", "mph");
 			attr_dev(span2, "class", "icon icon_wind");
 			set_style(span2, "transform", constants.windSpeedAndDirection(/*period*/ ctx[0].wind_speed, /*period*/ ctx[0].wind_deg));
 			add_location(span2, file, 44, 8, 1317);
 			attr_dev(span3, "class", "wind_units");
-			add_location(span3, file, 51, 49, 1554);
+			add_location(span3, file, 52, 48, 1575);
 			attr_dev(span4, "class", "wind_speed");
 			add_location(span4, file, 43, 6, 1283);
 			attr_dev(div2, "class", "weather_description");
@@ -703,7 +709,7 @@ function create_if_block(ctx) {
 				set_style(span2, "transform", constants.windSpeedAndDirection(/*period*/ ctx[0].wind_speed, /*period*/ ctx[0].wind_deg));
 			}
 
-			if (dirty & /*period*/ 1 && t10_value !== (t10_value = constants.roundSpeed(/*period*/ ctx[0].wind_speed) + "")) set_data_dev(t10, t10_value);
+			if (dirty & /*period*/ 1 && t10_value !== (t10_value = constants.windToMPH(/*period*/ ctx[0].wind_speed) + "")) set_data_dev(t10, t10_value);
 		},
 		d: function destroy(detaching) {
 			if (detaching) detach_dev(h3);
