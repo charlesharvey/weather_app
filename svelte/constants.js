@@ -12,8 +12,9 @@ export default {
     cork: { name: "cork", lat: 51.9, lng: -8.48 },
     izmir: { name: "izmir", lat: 38.47, lng: 27.114 },
     tisbury: { name: "tisbury", lat: 51.0627, lng: -2.118 },
+    glasgow: { name: "glasgow", lat: 55.8642, lng: -4.2518 },
   },
-  available_locations: ["woolwich", "malltraeth", "tisbury"],
+  available_locations: ["woolwich", "malltraeth", "tisbury", "glasgow"],
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
   USE_CACHE: true,

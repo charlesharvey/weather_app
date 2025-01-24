@@ -74,9 +74,9 @@
       // day.temp_bar_chart = tempBarChart(hours);
       day.temp_svg = tempSVGChart(hours);
 
-      if (di == 0) {
-        focusOnHour(day, first_hour);
-      }
+      // if (di == 0) {
+      //   focusOnHour(day, first_hour);
+      // }
     });
 
     days = data.daily;

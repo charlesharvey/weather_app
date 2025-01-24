@@ -492,8 +492,9 @@ System.register('app', [], function (exports) {
                 cork: { name: "cork", lat: 51.9, lng: -8.48 },
                 izmir: { name: "izmir", lat: 38.47, lng: 27.114 },
                 tisbury: { name: "tisbury", lat: 51.0627, lng: -2.118 },
+                glasgow: { name: "glasgow", lat: 55.8642, lng: -4.2518 },
               },
-              available_locations: ["woolwich", "malltraeth", "tisbury"],
+              available_locations: ["woolwich", "malltraeth", "tisbury", "glasgow"],
               ANIMATED_ICONS: false,
               CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
               USE_CACHE: true,
@@ -1074,7 +1075,7 @@ System.register('app', [], function (exports) {
             		c: function create() {
             			div = element("div");
             			attr_dev(div, "class", "loading");
-            			add_location(div, file$1, 447, 4, 12524);
+            			add_location(div, file$1, 447, 4, 12533);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -1144,12 +1145,12 @@ System.register('app', [], function (exports) {
             			}
 
             			attr_dev(section0, "id", "seven_days");
-            			add_location(section0, file$1, 331, 6, 8386);
+            			add_location(section0, file$1, 331, 6, 8395);
             			attr_dev(div0, "id", "seven_days_outer");
-            			add_location(div0, file$1, 330, 4, 8352);
+            			add_location(div0, file$1, 330, 4, 8361);
             			attr_dev(div1, "class", "button_group");
-            			add_location(div1, file$1, 435, 6, 12198);
-            			add_location(section1, file$1, 434, 4, 12182);
+            			add_location(div1, file$1, 435, 6, 12207);
+            			add_location(section1, file$1, 434, 4, 12191);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div0, anchor);
@@ -1308,7 +1309,7 @@ System.register('app', [], function (exports) {
             			if_block3.c();
             			t3 = space();
             			attr_dev(div, "class", div_class_value = "day weather_" + /*day*/ ctx[27].weather[0].icon);
-            			add_location(div, file$1, 334, 12, 8479);
+            			add_location(div, file$1, 334, 12, 8488);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -1539,9 +1540,9 @@ System.register('app', [], function (exports) {
             			}
 
             			attr_dev(ul, "class", "temperature_bar_chart");
-            			add_location(ul, file$1, 358, 18, 9403);
+            			add_location(ul, file$1, 358, 18, 9412);
             			attr_dev(div, "class", "rain_thing");
-            			add_location(div, file$1, 357, 16, 9360);
+            			add_location(div, file$1, 357, 16, 9369);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -1606,7 +1607,7 @@ System.register('app', [], function (exports) {
             			span = element("span");
             			t = text(t_value);
             			attr_dev(span, "class", "record_temp");
-            			add_location(span, file$1, 367, 26, 9823);
+            			add_location(span, file$1, 367, 26, 9832);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, span, anchor);
@@ -1647,7 +1648,7 @@ System.register('app', [], function (exports) {
             			attr_dev(li, "title", li_title_value = `${/*temp*/ ctx[36].value}°`);
             			toggle_class(li, "focussed", /*temp*/ ctx[36].hour === /*focussed_hour*/ ctx[3]);
             			set_style(li, "height", `${/*temp*/ ctx[36].height}%`);
-            			add_location(li, file$1, 360, 22, 9519);
+            			add_location(li, file$1, 360, 22, 9528);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, li, anchor);
@@ -1733,15 +1734,15 @@ System.register('app', [], function (exports) {
             			}
 
             			attr_dev(polyline, "points", polyline_points_value = /*day*/ ctx[27].temp_svg.polyline);
-            			add_location(polyline, file$1, 387, 20, 10564);
+            			add_location(polyline, file$1, 387, 20, 10573);
             			attr_dev(svg, "class", "sun_line_chart");
             			attr_dev(svg, "height", svg_height);
             			attr_dev(svg, "width", "100");
             			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 100 " + svg_height);
             			attr_dev(svg, "preserveAspectRatio", "none");
-            			add_location(svg, file$1, 377, 18, 10112);
+            			add_location(svg, file$1, 377, 18, 10121);
             			attr_dev(div, "class", "rain_thing");
-            			add_location(div, file$1, 376, 16, 10069);
+            			add_location(div, file$1, 376, 16, 10078);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -1824,7 +1825,7 @@ System.register('app', [], function (exports) {
             			polygon = svg_element("polygon");
             			attr_dev(polygon, "points", polygon_points_value = /*polygon*/ ctx[33].points);
             			toggle_class(polygon, "focussed", /*polygon*/ ctx[33].hour === /*focussed_hour*/ ctx[3]);
-            			add_location(polygon, file$1, 389, 22, 10691);
+            			add_location(polygon, file$1, 389, 22, 10700);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, polygon, anchor);
@@ -1866,10 +1867,10 @@ System.register('app', [], function (exports) {
             			div0 = element("div");
             			attr_dev(div0, "class", "rain_inner");
             			set_style(div0, "width", `${/*day*/ ctx[27].pop * 100}%`);
-            			add_location(div0, file$1, 421, 18, 11898);
+            			add_location(div0, file$1, 421, 18, 11907);
             			attr_dev(div1, "class", "rain_thing rain_probability");
             			attr_dev(div1, "title", div1_title_value = `${/*day*/ ctx[27].pop * 100}%`);
-            			add_location(div1, file$1, 417, 16, 11757);
+            			add_location(div1, file$1, 417, 16, 11766);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div1, anchor);
@@ -1922,9 +1923,9 @@ System.register('app', [], function (exports) {
             			}
 
             			attr_dev(ul, "class", "rain_chance_graph");
-            			add_location(ul, file$1, 403, 18, 11199);
+            			add_location(ul, file$1, 403, 18, 11208);
             			attr_dev(div, "class", "rain_thing");
-            			add_location(div, file$1, 402, 16, 11156);
+            			add_location(div, file$1, 402, 16, 11165);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, div, anchor);
@@ -1988,7 +1989,7 @@ System.register('app', [], function (exports) {
             		c: function create() {
             			span = element("span");
             			t = text(t_value);
-            			add_location(span, file$1, 410, 26, 11541);
+            			add_location(span, file$1, 410, 26, 11550);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, span, anchor);
@@ -2028,7 +2029,7 @@ System.register('app', [], function (exports) {
             			t = space();
             			attr_dev(li, "title", li_title_value = `${/*hour*/ ctx[30].pop * 100}%`);
             			set_style(li, "height", `${/*hour*/ ctx[30].pop * 100}%`);
-            			add_location(li, file$1, 405, 22, 11302);
+            			add_location(li, file$1, 405, 22, 11311);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, li, anchor);
@@ -2140,7 +2141,7 @@ System.register('app', [], function (exports) {
             			attr_dev(a, "href", "#location");
             			attr_dev(a, "class", "button");
             			toggle_class(a, "primary", /*loc*/ ctx[24] == /*location*/ ctx[1].name);
-            			add_location(a, file$1, 437, 10, 12288);
+            			add_location(a, file$1, 437, 10, 12297);
             		},
             		m: function mount(target, anchor) {
             			insert_dev(target, a, anchor);
@@ -2212,20 +2213,20 @@ System.register('app', [], function (exports) {
             			stop1 = svg_element("stop");
             			attr_dev(stop0, "stop-color", "#ddbf48");
             			attr_dev(stop0, "offset", "0%");
-            			add_location(stop0, file$1, 452, 6, 12639);
+            			add_location(stop0, file$1, 452, 6, 12648);
             			attr_dev(stop1, "stop-color", "#ddbf48");
             			attr_dev(stop1, "stop-opacity", "0.1");
             			attr_dev(stop1, "offset", "100%");
-            			add_location(stop1, file$1, 453, 6, 12687);
+            			add_location(stop1, file$1, 453, 6, 12696);
             			attr_dev(linearGradient, "id", "Gradient1");
             			attr_dev(linearGradient, "x1", "0");
             			attr_dev(linearGradient, "x2", "0");
             			attr_dev(linearGradient, "y1", "0");
             			attr_dev(linearGradient, "y2", "1");
-            			add_location(linearGradient, file$1, 451, 4, 12573);
-            			add_location(svg, file$1, 450, 2, 12563);
+            			add_location(linearGradient, file$1, 451, 4, 12582);
+            			add_location(svg, file$1, 450, 2, 12572);
             			toggle_class(div, "animated", constants.ANIMATED_ICONS);
-            			add_location(div, file$1, 328, 0, 8287);
+            			add_location(div, file$1, 328, 0, 8296);
             		},
             		l: function claim(nodes) {
             			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2385,11 +2386,9 @@ System.register('app', [], function (exports) {
             			// day.temp_line_chart = tempLineChart(hours);
             			// day.temp_bar_chart = tempBarChart(hours);
             			day.temp_svg = tempSVGChart(hours);
-
-            			if (di == 0) {
-            				focusOnHour(day, first_hour);
-            			}
-            		});
+            		}); // if (di == 0) {
+            		//   focusOnHour(day, first_hour);
+            		// }
 
             		$$invalidate(0, days = data.daily);
             	}
