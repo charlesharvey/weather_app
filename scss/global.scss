@@ -92,15 +92,15 @@ section#seven_days {
 
         @media(min-width: $tablet_width) {
 
-            max-width: 20vw;
+            max-width: 12vw;
 
         }
 
         @media(min-width: $computer_width) {
             // min-width: 170px;
             // max-width: 12vw;
+            width: 100%;
 
-            width: 200px;
             display: inline-block;
             max-width: auto;
             min-width: auto;
