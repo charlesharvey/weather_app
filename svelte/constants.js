@@ -13,8 +13,9 @@ export default {
     izmir: { name: "izmir", lat: 38.47, lng: 27.114 },
     tisbury: { name: "tisbury", lat: 51.0627, lng: -2.118 },
     glasgow: { name: "glasgow", lat: 55.8642, lng: -4.2518 },
+    linlithgow: { name: "linlithgow", lat: 55.9734, lng: -3.6006 },
   },
-  available_locations: ["woolwich", "malltraeth", "tisbury", "glasgow"],
+  available_locations: ["woolwich", "malltraeth", "tisbury", "linlithgow"],
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
   USE_CACHE: true,
