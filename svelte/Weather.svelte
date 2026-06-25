@@ -463,7 +463,7 @@
       <stop stop-color="#ddbf48" stop-opacity="0.1" offset="100%" />
     </linearGradient>
   </svg>
-
+  <!-- 
   {#if alerts}
     {#if alerts.length > 0}
       <div class="alerts">
@@ -475,5 +475,5 @@
         {/each}
       </div>
     {/if}
-  {/if}
+  {/if} -->
 </div>
