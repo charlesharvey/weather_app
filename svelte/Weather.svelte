@@ -12,6 +12,7 @@
   let focussed_hour;
   let click_player;
   let day_timer;
+  let alerts;
   const svg_height = 70;
 
   onMount(() => {
@@ -43,10 +44,18 @@
 
   function processData(data) {
     let hourindex = 0;
+
+    alerts = data.alerts;
+    console.log(alerts);
+    alerts.forEach((alrt) => {
+      alrt.nice_start = constants.timeToFullDate(alrt.start);
+      alrt.nice_end = constants.timeToFullDate(alrt.end);
+    });
+
     data.daily.forEach((day, di) => {
       const date = constants.timeToDate(day.dt);
       const hours = data.hourly.filter(
-        (h) => constants.timeToDate(h.dt) === date
+        (h) => constants.timeToDate(h.dt) === date,
       );
 
       const first_hour = hours[0];
@@ -104,8 +113,8 @@
               constants.MIN_TEMP,
               constants.MAX_TEMP,
               svg_height,
-              0
-            ) * 10
+              0,
+            ) * 10,
           ) / 10;
 
         if (!lastx) {
@@ -159,7 +168,7 @@
       const ct = constants.constrain(
         h.temp,
         constants.MIN_TEMP,
-        constants.MAX_TEMP
+        constants.MAX_TEMP,
       );
       const he =
         h.temp === false
@@ -196,7 +205,7 @@
         constants.MIN_TEMP,
         constants.MAX_TEMP,
         0,
-        100
+        100,
       );
 
       if (oldx && x) {
@@ -454,4 +463,17 @@
       <stop stop-color="#ddbf48" stop-opacity="0.1" offset="100%" />
     </linearGradient>
   </svg>
+
+  {#if alerts}
+    {#if alerts.length > 0}
+      <div class="alerts">
+        {#each alerts as alrt, ai}
+          <div class="alert {alrt.event}">
+            <div class="date">{alrt.nice_start}</div>
+            {alrt.description}
+          </div>
+        {/each}
+      </div>
+    {/if}
+  {/if}
 </div>

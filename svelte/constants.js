@@ -61,6 +61,12 @@ export default {
     const i = new Intl.DateTimeFormat("en-US", options).format(date);
     return i;
   },
+  timeToFullDate: (t) => {
+    const date = new Date(t * 1000);
+    const options = {};
+    const i = new Intl.DateTimeFormat("en-US", options).format(date);
+    return i;
+  },
 
   map: (number, inMin, inMax, outMin, outMax) => {
     return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;

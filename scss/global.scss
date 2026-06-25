@@ -577,3 +577,45 @@ section#seven_days {
         color: white;
     }
 }
+
+.alerts {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+
+    .alert {
+        padding: 10px;
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        margin: 0 0 20px;
+        font-size: #{$font_size * 0.7};
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 20px;
+        width: 400px;
+        // max-height: 200px;
+        // overflow: scroll;
+        box-shadow: $box_shadow;
+
+
+        .date {
+
+            font-weight: bold;
+        }
+
+        &.Red {
+            background-color: #c87272;
+            ;
+        }
+
+        &.Amber {
+            background-color: #e6aa6d;
+        }
+
+        &.Yellow {
+            background-color: #ede46a;
+        }
+    }
+}
