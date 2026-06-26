@@ -45,12 +45,11 @@
   function processData(data) {
     let hourindex = 0;
 
-    alerts = data.alerts;
-    console.log(alerts);
-    alerts.forEach((alrt) => {
-      alrt.nice_start = constants.timeToFullDate(alrt.start);
-      alrt.nice_end = constants.timeToFullDate(alrt.end);
-    });
+    // alerts = data.alerts;
+    //alerts.forEach((alrt) => {
+    // alrt.nice_start = constants.timeToFullDate(alrt.start);
+    // alrt.nice_end = constants.timeToFullDate(alrt.end);
+    // });
 
     data.daily.forEach((day, di) => {
       const date = constants.timeToDate(day.dt);
