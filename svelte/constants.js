@@ -27,6 +27,9 @@ export default {
   roundTemp: (a) => {
     return Math.round(a);
   },
+  roundTen: (a) => {
+    return Math.round(a * 10) / 10;
+  },
   windSpeedAndDirection: (speed, deg) => {
     let scale = speed / 10;
     scale = Math.min(Math.max(scale, 0.5), 1.2);
@@ -67,6 +70,18 @@ export default {
     const options = {};
     const i = new Intl.DateTimeFormat("en-US", options).format(date);
     return i;
+  },
+  wetBulbTemperature: (temp, rh) => {
+    const roundten = (a) => {
+      return Math.round(a * 100) / 100;
+    };
+
+    const a = temp * Math.atan(0.151977 * Math.sqrt(rh + 8.313659));
+    const b = 0.00391838 * Math.sqrt(rh * rh * rh) * Math.atan(0.023101 * rh);
+    const c = Math.atan(rh - 1.676331);
+    const d = Math.atan(temp + rh);
+    const e = 4.686035;
+    return roundten(a + b - c + d - e);
   },
 
   map: (number, inMin, inMax, outMin, outMax) => {

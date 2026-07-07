@@ -51,13 +51,13 @@
     // alrt.nice_end = constants.timeToFullDate(alrt.end);
     // });
 
-    data.daily.forEach((day) => {
-      console.log(
-        day.temp.day,
-        day.humidity,
-        wetBulbTemperature(day.temp.day, day.humidity),
-      );
-    });
+    // data.daily.forEach((day) => {
+    //   console.log(
+    //     day.temp.day,
+    //     day.humidity,
+    //     constants.wetBulbTemperature(day.temp.day, day.humidity),
+    //   );
+    // });
 
     data.daily.forEach((day, di) => {
       const date = constants.timeToDate(day.dt);
@@ -88,8 +88,7 @@
 
       // day.temp_line_chart = tempLineChart(hours);
       // day.temp_bar_chart = tempBarChart(hours);
-      day.temp_svg = tempSVGChart(hours);
-
+      day.temp_svg = tempSVGChart(hours, { wetbulb: true });
       // if (di == 0) {
       //   focusOnHour(day, first_hour);
       // }
@@ -98,48 +97,66 @@
     days = data.daily;
   }
 
-  function wetBulbTemperature(temp, rh) {
-    const a = temp * Math.atan(0.151977 * Math.sqrt(rh + 8.313659));
-    const b = 0.00391838 * Math.sqrt(rh * rh * rh) * Math.atan(0.023101 * rh);
-    const c = Math.atan(rh - 1.676331);
-    const d = Math.atan(temp + rh);
-    const e = 4.686035;
-    return a + b - c + d - e;
-  }
+  function tempSVGChart(hours, opts = null) {
+    let showwetbulb = false;
+    if (opts) {
+      if (opts.wetbulb) {
+        showwetbulb = true;
+      }
+    }
 
-
-  function tempSVGChart(hours) {
-    const alltemps = hours.filter((h) => h.temp !== false).map((h) => h.temp);
+    const allhours = hours.filter((h) => h.temp !== false);
+    const alltemps = allhours.map((h) => h.temp);
     const maxtemp = Math.max(...alltemps);
     const lowtemp = Math.min(...alltemps);
     let maxtaken = false;
     let mintaken = false;
 
     let pl = [];
+    let pl_wetbulb = [];
     let texts = [];
     let temps = hours.map((h) => h.temp);
+
     let lastx, lasty;
     let polygons = [];
     temps.forEach((temp, i) => {
       if (temp) {
+        const wetbulbtemp = constants.wetBulbTemperature(
+          hours[i].temp,
+          hours[i].humidity,
+        );
         const x = Math.round(constants.map(i + 1, 0, temps.length, 0, 100));
-        const y =
-          Math.round(
-            constants.map(
-              temp,
-              constants.MIN_TEMP,
-              constants.MAX_TEMP,
-              svg_height,
-              0,
-            ) * 10,
-          ) / 10;
+        const y = constants.roundTen(
+          constants.map(
+            temp,
+            constants.MIN_TEMP,
+            constants.MAX_TEMP,
+            svg_height,
+            0,
+          ),
+        );
+
+        // console.log(temp, wetbulbtemp, temp - wetbulbtemp, hours[i].humidity);
+
+        const y_wetbulb = constants.roundTen(
+          constants.map(
+            wetbulbtemp,
+            constants.MIN_TEMP,
+            constants.MAX_TEMP,
+            svg_height,
+            0,
+          ),
+        );
 
         if (!lastx) {
           lastx = Math.round(constants.map(i, 0, temps.length, 0, 100));
           lasty = y;
           pl.push(`${lastx}, ${y}`);
+          pl_wetbulb.push(`${lastx}, ${y_wetbulb}`);
         }
         pl.push(`${x}, ${y}`);
+        pl_wetbulb.push(`${x}, ${y_wetbulb}`);
+
         if (lasty) {
           polygons.push({
             points: `${lastx}, ${lasty},${x}, ${y},${x}, ${svg_height},${lastx}, ${svg_height} `,
@@ -167,11 +184,13 @@
       }
     });
     const polyline = pl.join(",");
+    const wetbulbline = showwetbulb ? pl_wetbulb.join(",") : null;
 
     return {
       polyline,
       polygons,
       texts,
+      wetbulbline,
     };
   }
 
@@ -421,6 +440,13 @@
                     <!-- {#each day.temp_svg.texts as text}
                     <text x={text.x} y={text.y}>{text.text}</text>
                   {/each} -->
+
+                    {#if day.temp_svg.wetbulbline}
+                      <polyline
+                        class="wet_bulb_line"
+                        points={day.temp_svg.wetbulbline}
+                      />
+                    {/if}
                   </svg>
                 </div>
               {/if}

@@ -333,6 +333,12 @@ section#seven_days {
         }
     }
 
+    polyline.wet_bulb_line {
+        opacity: 0.25;
+        stroke: $cloud_color;
+        stroke-dasharray: 2px 3px;
+    }
+
     polygon {
         fill: lighten($sun_color, 10);
         fill: url(#Gradient1);
