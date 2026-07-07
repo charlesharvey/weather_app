@@ -51,6 +51,14 @@
     // alrt.nice_end = constants.timeToFullDate(alrt.end);
     // });
 
+    data.daily.forEach((day) => {
+      console.log(
+        day.temp.day,
+        day.humidity,
+        wetBulbTemperature(day.temp.day, day.humidity),
+      );
+    });
+
     data.daily.forEach((day, di) => {
       const date = constants.timeToDate(day.dt);
       const hours = data.hourly.filter(
@@ -89,6 +97,16 @@
 
     days = data.daily;
   }
+
+  function wetBulbTemperature(temp, rh) {
+    const a = temp * Math.atan(0.151977 * Math.sqrt(rh + 8.313659));
+    const b = 0.00391838 * Math.sqrt(rh * rh * rh) * Math.atan(0.023101 * rh);
+    const c = Math.atan(rh - 1.676331);
+    const d = Math.atan(temp + rh);
+    const e = 4.686035;
+    return a + b - c + d - e;
+  }
+
 
   function tempSVGChart(hours) {
     const alltemps = hours.filter((h) => h.temp !== false).map((h) => h.temp);

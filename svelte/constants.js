@@ -14,6 +14,7 @@ export default {
     tisbury: { name: "tisbury", lat: 51.0627, lng: -2.118 },
     glasgow: { name: "glasgow", lat: 55.8642, lng: -4.2518 },
     linlithgow: { name: "linlithgow", lat: 55.9734, lng: -3.6006 },
+    jacobabad: { name: "jacobabad", lat: 28.2792752, lng: 68.426437 },
   },
   available_locations: ["woolwich", "malltraeth", "tisbury", "linlithgow"],
   ANIMATED_ICONS: false,
