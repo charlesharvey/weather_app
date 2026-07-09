@@ -339,6 +339,14 @@ section#seven_days {
         stroke-dasharray: 2px 3px;
     }
 
+    polyline.grid_line {
+        stroke-width: 0.5;
+        opacity: 0.54;
+        stroke: $cloud_color;
+        stroke-dasharray: 1px 2px;
+
+    }
+
     polygon {
         fill: lighten($sun_color, 10);
         fill: url(#Gradient1);

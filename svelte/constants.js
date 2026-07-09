@@ -20,7 +20,7 @@ export default {
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
   USE_CACHE: true,
-  MAX_TEMP: 45,
+  MAX_TEMP: 50,
   MIN_TEMP: -10,
   TIME_TO_UNFOCUS_HOUR: 5000,
   click_file: "audio/tick.mp3",
@@ -72,16 +72,12 @@ export default {
     return i;
   },
   wetBulbTemperature: (temp, rh) => {
-    const roundten = (a) => {
-      return Math.round(a * 100) / 100;
-    };
-
     const a = temp * Math.atan(0.151977 * Math.sqrt(rh + 8.313659));
     const b = 0.00391838 * Math.sqrt(rh * rh * rh) * Math.atan(0.023101 * rh);
     const c = Math.atan(rh - 1.676331);
     const d = Math.atan(temp + rh);
     const e = 4.686035;
-    return roundten(a + b - c + d - e);
+    return a + b - c + d - e;
   },
 
   map: (number, inMin, inMax, outMin, outMax) => {

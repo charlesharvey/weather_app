@@ -88,7 +88,7 @@
 
       // day.temp_line_chart = tempLineChart(hours);
       // day.temp_bar_chart = tempBarChart(hours);
-      day.temp_svg = tempSVGChart(hours, { wetbulb: true });
+      day.temp_svg = tempSVGChart(hours, { wetbulb: true, gridlines: false });
       // if (di == 0) {
       //   focusOnHour(day, first_hour);
       // }
@@ -99,9 +99,13 @@
 
   function tempSVGChart(hours, opts = null) {
     let showwetbulb = false;
+    let showgridlines = false;
     if (opts) {
       if (opts.wetbulb) {
         showwetbulb = true;
+      }
+      if (opts.gridlines) {
+        showgridlines = true;
       }
     }
 
@@ -119,6 +123,17 @@
 
     let lastx, lasty;
     let polygons = [];
+
+    const gridlinesarray = [];
+
+    const MIN = constants.MIN_TEMP;
+    const MAX = constants.MAX_TEMP;
+    const rt = constants.roundTen;
+
+    for (let i = MIN + 10; i <= MAX - 10; i += 10) {
+      gridlinesarray.push({ temp: i, line: [] });
+    }
+
     temps.forEach((temp, i) => {
       if (temp) {
         const wetbulbtemp = constants.wetBulbTemperature(
@@ -126,27 +141,11 @@
           hours[i].humidity,
         );
         const x = Math.round(constants.map(i + 1, 0, temps.length, 0, 100));
-        const y = constants.roundTen(
-          constants.map(
-            temp,
-            constants.MIN_TEMP,
-            constants.MAX_TEMP,
-            svg_height,
-            0,
-          ),
-        );
+        const y = rt(constants.map(temp, MIN, MAX, svg_height, 0));
 
         // console.log(temp, wetbulbtemp, temp - wetbulbtemp, hours[i].humidity);
 
-        const y_wetbulb = constants.roundTen(
-          constants.map(
-            wetbulbtemp,
-            constants.MIN_TEMP,
-            constants.MAX_TEMP,
-            svg_height,
-            0,
-          ),
-        );
+        const y_wetbulb = constants.map(wetbulbtemp, MIN, MAX, svg_height, 0);
 
         if (!lastx) {
           lastx = Math.round(constants.map(i, 0, temps.length, 0, 100));
@@ -156,6 +155,11 @@
         }
         pl.push(`${x}, ${y}`);
         pl_wetbulb.push(`${x}, ${y_wetbulb}`);
+
+        gridlinesarray.forEach((gl) => {
+          const yl = constants.map(gl.temp, MIN, MAX, svg_height, 0);
+          gl.line.push(`${x}, ${yl}`);
+        });
 
         if (lasty) {
           polygons.push({
@@ -185,10 +189,11 @@
     });
     const polyline = pl.join(",");
     const wetbulbline = showwetbulb ? pl_wetbulb.join(",") : null;
-
+    const gridlines = showgridlines ? gridlinesarray : null;
     return {
       polyline,
       polygons,
+      gridlines,
       texts,
       wetbulbline,
     };
@@ -446,6 +451,11 @@
                         class="wet_bulb_line"
                         points={day.temp_svg.wetbulbline}
                       />
+                    {/if}
+                    {#if day.temp_svg.gridlines}
+                      {#each day.temp_svg.gridlines as gl}
+                        <polyline class="grid_line" points={gl.line} />
+                      {/each}
                     {/if}
                   </svg>
                 </div>
