@@ -21,16 +21,7 @@ export default {
     masai: { name: "masai", lat: -1.2004, lng: 34.817 },
     watamu: { name: "watamu", lat: -3.3508, lng: 40.0138 },
   },
-  available_locations: [
-    "woolwich",
-    // "malltraeth",
-    // "tisbury",
-    // "linlithgow",
-    "nairobi",
-    "masai",
-    "naivasha",
-    "watamu",
-  ],
+  available_locations: ["woolwich", "malltraeth", "tisbury", "linlithgow"],
   ANIMATED_ICONS: false,
   CACHE_LENGTH: 20 * 60 * 1000, // 20 minutes
   USE_CACHE: true,
