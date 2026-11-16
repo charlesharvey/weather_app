@@ -5,6 +5,20 @@
   export let period;
 
   onMount(() => {});
+
+  function hasPeriodMinMax(period) {
+    if (period) {
+      if (period.temp) {
+        if (
+          typeof period.temp.max !== "undefined" &&
+          typeof period.temp.min !== "undefined"
+        ) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 </script>
 
 <div>
@@ -20,7 +34,7 @@
 
     <div class="icon icon_{period.weather[0].icon}"></div>
     <div class="temperatures">
-      {#if period.temp.min && period.temp.max}
+      {#if hasPeriodMinMax(period)}
         <div class="high_temperature">
           {constants.roundTemp(period.temp.max)}
           <span class="degree_symbol">&deg;</span>
@@ -46,7 +60,7 @@
           title="mph"
           style:transform={constants.windSpeedAndDirection(
             period.wind_speed,
-            period.wind_deg
+            period.wind_deg,
           )}
           class="icon icon_wind"
         ></span>
